@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS widgets CASCADE; -- Gets rid of the widgets table that was given at the beginning 
 DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users (
