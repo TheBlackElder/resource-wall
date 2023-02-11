@@ -1,3 +1,7 @@
--- Users table seeds here (Example)
-INSERT INTO users (name) VALUES ('Alice');
-INSERT INTO users (name) VALUES ('Kira');
+INSERT INTO users (username, password, email, first_name, last_name, profile_picture, bio)
+VALUES
+  ('Potato', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'potato@lhl.ca', 'Frie', 'Me', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/ac/ac899da84885b8d49ad19f2bd0b8e102403bcf07_full.jpg', 'I like potato'),
+  ('EvaStan', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'sebastianguerra@ymail.com', 'Eva', 'Stanley', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/26/265c8b3923f04a2a910cb709329df9481413a3ce_full.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui.'),
+  ('LMeyer', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'jacksonrose@hotmail.com', 'Louisa', 'Meyer', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/fb/fbbdb952eebb5549a3eff75a5846d3f37242e7e7_full.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui.'),
+  ('DOM', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'victoriablackwell@outlook.com', 'Dominic', 'Parks', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/84/845dc395da52570543e9a71c3cef54dde7f8d8f7_full.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui.')
+;
