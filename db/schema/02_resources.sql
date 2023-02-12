@@ -9,7 +9,6 @@ CREATE TABLE resources (
   url VARCHAR(255) NOT NULL,
   media_url VARCHAR(255) NOT NULL,
   is_video BOOLEAN NOT NULL,
-  is_private BOOLEAN NOT NULL,
   thumbnail VARCHAR(255),
   created_on TIMESTAMP NOT NULL DEFAULT NOW()
 );
