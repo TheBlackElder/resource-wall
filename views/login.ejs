@@ -1,0 +1,31 @@
+<main>
+  <%- include('partials/_header') %>
+  <div class="login-page">
+    <h3 class="title">Login</h3>
+    <span> Sign in to continue </span>
+    <form action="/login" method="POST">
+      <div>
+        <label for="email">Email address</label>
+        <br />
+        <input type="email" name="email" placeholder="email" required />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <br />
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          required
+        />
+      </div>
+      <br />
+      <span> Forgot password? </span>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <div class="sign-up-prompt">
+      <span> Don't have an account? </span>
+      <span> Sign-up here </span>
+    </div>
+  </div>
+</main>
