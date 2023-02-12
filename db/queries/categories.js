@@ -7,10 +7,11 @@ const db = require("../connection");
  */
 
 const getIdWithCategory = (type) => {
+  const sql = `SELECT id FROM categories WHERE type = $1;`
   return db
-    .query(`SELECT id FROM categories WHERE type = $1`, [type])
-    .then((data) => {
-      return data.rows[0];
+    .query(sql, [type])
+    .then((result) => {
+      return result.rows[0];
     })
     .catch((err) => {
       console.log(err.message);
@@ -24,10 +25,11 @@ const getIdWithCategory = (type) => {
  */
 
 const getCategoryWithId = (id) => {
+  const sql = `SELECT type FROM categories WHERE id = $1;`
   return db
-    .query(`SELECT type FROM categories WHERE id = $1;`, [id])
-    .then((data) => {
-      return data.rows[0];
+    .query(sql, [id])
+    .then((result) => {
+      return result.rows[0];
     })
     .catch((err) => {
       console.log(err.message);
