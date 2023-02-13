@@ -3,7 +3,7 @@ VALUES
   ('WEB DEVELOPMENT'),
   ('UX/UI'),
   ('CYBER SECURITY'),
-  ('DATA SCIENCE'),
-  ('DATA ANALYTICS')
+  ('AI'),
+  ('WEB3')
 ;
 
