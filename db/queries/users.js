@@ -10,7 +10,7 @@ const loggedUser = function (req, res) {
 
 // gets single user with given email
 const getUserByEmail = function (email) {
-  const sql = `SELECT profile_picture, first_name, last_name, username, bio, email, FROM users WHERE email = $1;`;
+  const sql = `SELECT profile_picture, first_name, last_name, username, bio, email FROM users WHERE email = $1;`;
   return db
     .query(sql, [email])
     .then((result) => {
@@ -23,7 +23,7 @@ const getUserByEmail = function (email) {
 
 // gets user info with given ID
 const getUserById = function (id) {
-  const sql = `SELECT profile_picture, first_name, last_name, username, bio, email, FROM users WHERE id = $1;`;
+  const sql = `SELECT profile_picture, first_name, last_name, username, bio, email FROM users WHERE id = $1;`;
   return db
     .query(sql, [id])
     .then((result) => {
