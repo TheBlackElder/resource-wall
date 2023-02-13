@@ -75,4 +75,4 @@ const getResourcesWithUserID = (id) => {
     });
 };
 
-module.exports = { getResourcesWithCategory, getResourcesWithUserID, getAllResources };
+module.exports = { getResourcesWithCategory, getResourcesWithUserID, getAllResources};
