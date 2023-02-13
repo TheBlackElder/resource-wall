@@ -6,6 +6,18 @@ const db = require("../connection");
  * @returns {Promise} A promise to the user
  */
 
+const getAllResources = () => {
+  const sql = `SELECT * FROM resources`
+  return db
+    .query(sql)
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
 const getResourcesWithCategory = (category) => {
   const sql = `
       SELECT
@@ -63,4 +75,4 @@ const getResourcesWithUserID = (id) => {
     });
 };
 
-module.exports = { getResourcesWithCategory, getResourcesWithUserID };
+module.exports = { getResourcesWithCategory, getResourcesWithUserID, getAllResources };
