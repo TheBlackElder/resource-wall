@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const
+const {getAllResources} = require('../db/queries/resources');
 
 const client = require('../db/connect');
 
 // loads and renders home page
 router.get('/', (req, res) => {
-// get all resources then render page
-  return res.render('/home');
+  getAllResources()
+  .then(() => {
+    return res.render('/home');
+  })
 });
 
 module.exports = router;
