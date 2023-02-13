@@ -1,9 +1,9 @@
 INSERT INTO categories (type)
 VALUES
-  ('FRONT-END'),
-  ('BACK-END'),
-  ('FULL-STACK'),
+  ('WEB DEVELOPMENT'),
+  ('UX/UI'),
+  ('CYBER SECURITY'),
   ('DATA SCIENCE'),
-  ('ANALYTICS')
+  ('DATA ANALYTICS')
 ;
 
