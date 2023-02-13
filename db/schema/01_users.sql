@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS widgets CASCADE; -- Gets rid of the widgets table that was given at the beginning 
+DROP TABLE IF EXISTS widgets CASCADE; -- Gets rid of the widgets table that was given at the beginning
 DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users (
@@ -9,5 +9,6 @@ CREATE TABLE users (
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   profile_picture VARCHAR(255),
-  bio VARCHAR(255)
+  bio VARCHAR(255),
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );

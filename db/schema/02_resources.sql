@@ -10,5 +10,5 @@ CREATE TABLE resources (
   media_url VARCHAR(255) NOT NULL,
   is_video BOOLEAN NOT NULL,
   thumbnail VARCHAR(255),
-  created_on TIMESTAMP NOT NULL DEFAULT NOW()
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
