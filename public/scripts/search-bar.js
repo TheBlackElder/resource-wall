@@ -1,5 +1,3 @@
-const renderSearch = require('helpers.js')
-
 $(document).ready(function () {
   $('.input').on('input', () => {
     $('#resources-wrapper').empty();
@@ -32,21 +30,92 @@ $(document).ready(function () {
             'url',
           ]
         };
+        if (!searchTerm) {
+          $(() => {
+            const renderResources = function (resources) {
+              $("#resources-wrapper").empty();
+              let count = 0;
+              for (const resource of resources) {
+                count++;
+                if (count <= 4) {
+                  const $resource = createResourceElement(resource);
+                  $("#resources-wrapper").prepend($resource);
+                }
+              }
+            };
+
+            const createResourceElement = (resourceObject) => {
+              let $resource = `
+            <div class="resource-containers">
+            <div id="col s12 m4 l2">
+              <div class="res-cards">
+                <div class="res-image">
+                <img src="${resourceObject.media_url}">
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
+                </div>
+              </div>
+            </div>
+            </div>
+            `;
+              return $resource;
+            };
+
+            const loadResources = () => {
+              $.get("http://localhost:8080/resources/all", (data) => {
+                renderResources(data);
+              });
+            };
+
+            loadResources();
+          });
+        }
         const fuse = new Fuse(response, options);
         const searchResults = fuse.search(searchTerm);
         console.log('searchbar input:', searchTerm)
-        console.log(fuse.search(searchTerm))
-        // Clear the contents of the container
-        // $('#resources-wrapper').empty();
+        console.log('search term', searchTerm)
+        console.log('results', fuse.search(searchTerm))
+        //////////////////////
+        $(() => {
+          const renderResources = function (resources) {
+            $("#resources-wrapper").empty();
+            let count = 0;
+            for (const resource of resources) {
+              count++;
+              if (count <= 4) {
+                const $resource = createResourceElement(resource);
+                $("#resources-wrapper").prepend($resource);
+              }
+            }
+          };
 
-        // Loop through the search results and append each one to the container
-       // renderResources(searchResults)
+
+          const createResourceElement = (resourceObject) => {
+            let $resource = `
+          <div class="resource-containers">
+          <div id="col s12 m4 l2">
+            <div class="res-cards">
+              <div class="res-image">
+              <img src="${resourceObject.media_url}">
+                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
+              </div>
+            </div>
+          </div>
+          </div>
+          `;
+            return $resource;
+          };
+
+          const loadResources = () => {
+            renderResources(searchResults);
+          };
+
+          loadResources();
+        });
+
       });
   });
 });
 
-//on input empty, then prepend, resuse create elements
-//on click empty, ccreate element, prepend/append
 
 
 
