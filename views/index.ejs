@@ -10,12 +10,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
 
+
   <!-- App CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
 
   <!-- App JS -->
   <script src="/vendor/jquery-3.0.0.js"></script>
@@ -26,6 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
 
 <!-- Montesserat -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,6 +44,12 @@
   referrerpolicy="no-referrer"
 ></script>
 
+<!-- Materialize -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Materialize  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
   <!-- Font Awesome  -->
 <link
 rel="stylesheet"
@@ -50,11 +60,13 @@ referrerpolicy="no-referrer"
 />
 
 
+
+
 </head>
 
 <body>
   <%- include('partials/_header') %>
-  <h1>Have fun! 🥔</h1>
+  <%- include('partials/category-tabs') %>
 </body>
 
 </html>
