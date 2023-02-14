@@ -61,5 +61,3 @@ $(() => {
 
   loadResources();
 });
-
-module.exports = 
