@@ -1,3 +1,5 @@
+const renderSearch = require('helpers.js')
+
 $(document).ready(function () {
   $('.input').on('input', () => {
     $('#resources-wrapper').empty();
@@ -35,10 +37,10 @@ $(document).ready(function () {
         console.log('searchbar input:', searchTerm)
         console.log(fuse.search(searchTerm))
         // Clear the contents of the container
-        $('#resources-wrapper').empty();
-        
+        // $('#resources-wrapper').empty();
+
         // Loop through the search results and append each one to the container
-        renderResources(searchResults)
+       // renderResources(searchResults)
       });
   });
 });
