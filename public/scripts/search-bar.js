@@ -4,7 +4,7 @@ $(() => {
     console.log(searchTerm)
     $.ajax({
       method: 'GET',
-      url: 'http://localhost:8080/api/home',
+      url: 'http://localhost:8080/resources/all',
     })
       .then((response) => {
         console.log(response)
