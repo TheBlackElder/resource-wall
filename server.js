@@ -26,12 +26,16 @@ app.use(
 );
 app.use(express.static('public'));
 
+// to direct images (server knows where to get images)
+app.use(express.static(__dirname + '/public'));
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home-routes');
+const resourcesRoutes = require('./routes/resources.js');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -40,6 +44,8 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/api/home', homeRoutes);
+app.use('/resources', resourcesRoutes);
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page

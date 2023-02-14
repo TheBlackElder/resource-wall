@@ -1,7 +1,7 @@
 INSERT INTO categories (type)
 VALUES
   ('WEB DEVELOPMENT'),
-  ('UX/UI'),
+  ('UX&UI'),
   ('CYBER SECURITY'),
   ('AI'),
   ('WEB3')
