@@ -22,6 +22,33 @@
         browsers (tested): Chrome, Firefox, Safari, Opera, IE10, IE11, Android
         (Chrome), iOS Safari (10+)
       </p>
+
+<article class="tweets" >
+<header class="tweet-header" >
+  <div class="tweet-headerProfile">
+  <img src='${tweet.user.avatars}'>
+    <label class="tweet-username" > ${tweet.user.name} </label>
+  </div>
+  <label class="tweet-handle" >
+   ${tweet.user.handle}
+  </label>
+</header>
+<span class="tweet-body">
+ ${escape(tweet.content.text)}
+</span>
+<footer class="tweet-footerIcons" >
+  <label class="tweet-time">
+    ${timeago.format(tweet.created_at)}
+  </label>
+  <div >
+    <i class="fa-solid fa-flag"></i>
+    <i class="fa-solid fa-retweet"></i>
+    <i class="fa-solid fa-heart"></i>
+  </div>
+</footer>
+</article>
+
+
     </div> -->
 
 
