@@ -1,5 +1,5 @@
-$(() => {
-  $('.search').on('keyup', () => {
+$(document).ready(function () {
+  $('.search').on('change', () => {
     let searchTerm = $('.search').val();
     console.log(searchTerm)
     $.ajax({
@@ -23,8 +23,8 @@ $(() => {
           ]
         };
         const fuse = new Fuse(response, options);
+        console.log('fuse search search term',fuse.search(searchTerm))
         return fuse.search(searchTerm);
       });
-    console.log(searchResults)
   });
 });
