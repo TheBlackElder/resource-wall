@@ -1,6 +1,6 @@
 $(() => {
-  $('.input').on('keyup', () => {
-    let searchTerm = $('.input').val();
+  $('.search').on('keyup', () => {
+    let searchTerm = $('.search').val();
     console.log(searchTerm)
     $.ajax({
       method: 'GET',
