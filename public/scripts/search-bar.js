@@ -30,6 +30,7 @@ $(document).ready(function () {
             'url',
           ]
         };
+        // default to render all
         if (!searchTerm) {
           $(() => {
             const renderResources = function (resources) {
@@ -75,6 +76,7 @@ $(document).ready(function () {
         console.log('search term', searchTerm)
         console.log('results', fuse.search(searchTerm))
         //////////////////////
+        // render search bar results
         $(() => {
           const renderResources = function (resources) {
             $("#resources-wrapper").empty();
