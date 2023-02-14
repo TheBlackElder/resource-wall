@@ -82,9 +82,11 @@ $(document).ready(function () {
             $("#resources-wrapper").empty();
             let count = 0;
             for (const resource of resources) {
+              console.log('resource of resources',resource)
+              console.log('resource item', resource.item)
               count++;
               if (count <= 4) {
-                const $resource = createResourceElement(resource);
+                const $resource = createResourceElement(resource.item);
                 $("#resources-wrapper").prepend($resource);
               }
             }
@@ -110,7 +112,6 @@ $(document).ready(function () {
           const loadResources = () => {
             renderResources(searchResults);
           };
-
           loadResources();
         });
 
