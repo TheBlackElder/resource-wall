@@ -28,10 +28,21 @@ $(() => {
         $("#resources-wrapper").prepend($resource);
       }
     }
-  }
+  };
 
-    const createResourceElement = (resourceObject, contentType) => {
-      let $resource = `
+  $(document).on("click", ".btn-floating", function (e) {
+    e.preventDefault();
+    const resourceId = $(this).attr("data-id");
+    console.log("-------------", resourceId);
+    $.post(`/api/likes/${resourceId}/`, { user_id: 1 }).done(function (data) {
+      // alert("Data Loaded: " + data);
+    });
+  });
+
+  const createResourceElement = (resourceObject, contentType) => {
+    console.log(resourceObject);
+    const id = resourceObject.id;
+    let $resource = `
         <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
         ${contentType}
@@ -40,7 +51,10 @@ $(() => {
         <span class="card-title activator grey-text text-darken-4">
         ${resourceObject.title}
         <i class="material-icons right">...</i></span>
-        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
+        <form class="like-form">
+          <input name="like-input" type="hidden">
+          <button class="btn-floating halfway-fab waves-effect waves-light red" data-id="${id}"><i class="fa-solid fa-heart"></i></button>
+        </form>
         <p><a href="#">${resourceObject.category}</a></p>
         </div>
         <div class="card-reveal">
@@ -49,37 +63,29 @@ $(() => {
         <p><a href="#">Read More</a></p>
         </div>
         </div>`;
-      return $resource;
-    };
+    return $resource;
+  };
 
-    const loadResources = (value) => {
-      $.get(
-        `http://localhost:8080/resources/cat/${value}`,
-        (data) => {
-          console.log("===============", data);
-          renderResources(data);
-        }
-        );
-      };
-    //   loadResources();
-    // })
+  const loadResources = (value) => {
+    $.get(`http://localhost:8080/resources/cat/${value}`, (data) => {
+      console.log("===============", data);
+      renderResources(data);
+    });
+  };
+  //   loadResources();
+  // })
 
   $(".category-form").on("submit", (event) => {
     event.preventDefault();
     console.log("yo");
     console.log(event.target.category.value);
     loadResources(event.target.category.value);
+  });
 
-
-    })
-
-
-// end of document.ready
+  // end of document.ready
 });
 
-
-
-    // $.ajax({
+// $.ajax({
 //   method: 'GET',
 //   url: '/cat/UX&UI'
 // })
