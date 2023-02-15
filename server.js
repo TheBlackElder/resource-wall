@@ -37,11 +37,7 @@ const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home-routes');
 const resourcesRoutes = require('./routes/resources.js');
 
-<<<<<<< HEAD
-
-=======
 const likesApiRoutes = require('./routes/likes-api.js');
->>>>>>> master
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -51,12 +47,7 @@ app.use('/users', usersRoutes);
 app.use('/api/home', homeRoutes);
 app.use('/resources', resourcesRoutes);
 
-<<<<<<< HEAD
-
-
-=======
 app.use('/api/likes', likesApiRoutes);
->>>>>>> master
 // Note: mount other resources here, using the same pattern above
 
 // Home page
