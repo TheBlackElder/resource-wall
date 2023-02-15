@@ -1,11 +1,30 @@
 <div id="category-tabs">
   <div class="col s12">
-  <button class="btn active" onclick="filterSelection('All')"> All</button>
-  <button class="btn-tabs" onclick="filterSelection('UX/UI')">UX/UI</button>
-  <button class="btn-tabs" onclick="filterSelection('Cybersecurity')">Cybersecurity</button>
+  <!-- <button class="btn active" onclick="filterSelection('All')"> All</button> -->
+  <form class="category-form">
+    <input name="category" type="hidden" value="UX&UI">
+    <button class="btn-tabs">UX/UI</button>
+  </form>
+  <form class="category-form">
+    <input name="category" type="hidden" value="WEB DEVELOPMENT">
+    <button class="btn-tabs">Web Development</button>
+  </form>
+  <form class="category-form">
+    <input name="category" type="hidden" value="CYBER SECURITY">
+    <button class="btn-tabs">Cybersecurity</button>
+  </form>
+  <form class="category-form">
+    <input name="category" type="hidden" value="AI">
+    <button class="btn-tabs">AI</button>
+  </form>
+  <form class="category-form">
+    <input name="category" type="hidden" value="WEB3">
+    <button class="btn-tabs">Blockchain</button>
+  </form>
+  <!-- <button class="btn-tabs" onclick="filterSelection('Cybersecurity')">Cybersecurity</button>
   <button class="btn-tabs" onclick="filterSelection('AI')">AI</button>
   <button class="btn-tabs" onclick="filterSelection('Web Development')">Web Development</button>
-  <button class="btn-tabs" onclick="filterSelection('Blockchain')">Blockchain</button>
+  <button class="btn-tabs" onclick="filterSelection('Blockchain')">Blockchain</button> -->
   </div>
 </div>
 
