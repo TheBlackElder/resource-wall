@@ -57,12 +57,11 @@ app.use('/resources', resourcesRoutes);
 
 app.get('/', (req, res) => {
   console.log('in here!!!!!')
-  res.render('index');
+  res.render('index', { showUserButtons: true });
 });
 
 app.get('/login', (req, res) => {
-  console.log('login')
-  res.render('login');
+  res.render('login', { showUserButtons: undefined });
 });
 
 app.listen(PORT, () => {

@@ -1,54 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Login</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-  <%- include('partials/_header') %>
-  <div class="login-container">
-    <h1>Login</h1>
-    <form>
-      <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-      </div>
-      <button type="submit">Login</button>
-    </form>
-  </div>
-</body>
-</html>
-<!-- <main>
-  <div class="login-page">
-    <h3 class="title">Login</h3>
-    <span> Sign in to continue </span>
-    <form action="/login" method="POST">
+  <head>
+    <%- include('partials/_header') %>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/login.css">
+  </head>
+  <body>
+    <div class="container">
+      <form action="" method="POST">
+        <h2>Login</h2>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+          <a href="#">Forgot password?</a>
+        </div>
+        <div>
+          <button type="submit">Log In</button>
+        </div>
+      </form>
       <div>
-        <label for="email">Email address</label>
-        <br />
-        <input type="email" name="email" placeholder="email" required />
+        <p>Don't have an account? <a href="#">Sign up here</a></p>
       </div>
-      <div>
-        <label for="password">Password</label>
-        <br />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          required
-        />
-      </div>
-      <br />
-      <span> Forgot password? </span>
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-    <div class="sign-up-prompt">
-      <span> Don't have an account? </span>
-      <span> Sign-up here </span>
     </div>
-  </div>
-</main> -->
+  </body>
+</html>
+
+
+

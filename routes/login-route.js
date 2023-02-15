@@ -12,6 +12,7 @@ router.use(cookieSession({
 // renders login page
 router.get("/login", (req, res) => {
   console.log('--------')
+  const url = window.location.href;
   return res.render("../views/login");
 });
 
