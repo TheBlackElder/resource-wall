@@ -1,8 +1,8 @@
 <div id="resource-details">
   <div class="res-creator">
     <i class="fa-solid fa-circle-user"></i>
-    <span>@username_handle</span>
-    <span>2 days ago</span>
+    <span>@<%= resource.username %></span>
+    <span><%= resource.created_at%></span>
   </div>
   <div class="res-thumbnail">
     <img src="assets/images/art.png">
@@ -24,13 +24,13 @@
       <input type="radio" name="stars" id="star-e" value="1"/>
       <label for="star-e"></label>
 </div>
-<span>Avg rating 4</span>
-<span>(Based on 2 ratings)</span>
+<span><%= resource.rating %></span>
+<!-- <span>(Based on 2 ratings)</span> -->
   </div>
   <div class="res-content">
-    <h3>Dream Job</h3>
-    <a href="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0">//www.youtube.com/embed/Q8TXgCzxEnw?rel=0</a>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam recusandae amet commodi deleniti error voluptatem enim, non molestias nam dignissimos, eum possimus molestiae rerum voluptatibus modi reiciendis tenetur laudantium fugit!</p>
+    <h3><%= resource.title %></h3>
+    <a href="<%= resource.url %>"><%= resource.url %></a>
+    <p><%= resource.description %></p>
   </div>
   <div class="comment-section">
     <h4>
@@ -40,7 +40,7 @@
 
     <div class="add-comment">
       <i class="fa-solid fa-circle-user"></i>
-      <span>2 days ago</span>
+      <span><%= resource.created_at %></span>
       <textarea name="comment-box" id="user-comment" cols="30" rows="10"></textarea>
       <i class="fa-solid fa-share"></i>
     </div>

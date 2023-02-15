@@ -42,8 +42,9 @@ router.get("/details/:id", (req, res) => {
   const id = req.params.id;
   resourceQueries
     .getResourceDetailsWithId(id)
-    .then((reseource) => {
-      res.json(reseource);
+    .then((resource) => {
+      const templateVars = {resource: resource[0]};
+      res.render(`resource-details`, templateVars);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
