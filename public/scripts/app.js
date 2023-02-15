@@ -1,5 +1,5 @@
 $(() => {
-  const renderResources = function (resources) {
+  const renderResources = function(resources) {
     $("#resources-wrapper").empty();
     let count = 0;
     for (const resource of resources) {

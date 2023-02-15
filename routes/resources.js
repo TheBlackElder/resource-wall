@@ -6,7 +6,7 @@ router.get("/all", (req, res) => {
   resourceQueries
     .getAllResources()
     .then((resources) => {
-      res.json( resources );
+      res.json(resources);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
@@ -14,7 +14,7 @@ router.get("/all", (req, res) => {
 });
 
 router.get("/user/:id", (req, res) => {
-  const id = req.params.id
+  const id = req.params.id;
   resourceQueries
     .getResourcesWithUserID(id)
     .then((resources) => {

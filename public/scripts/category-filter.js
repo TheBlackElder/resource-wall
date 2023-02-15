@@ -4,7 +4,7 @@ $(() => {
     event.preventDefault();
     console.log("yo");
     console.log(event.target.category.value);
-    const renderResources = function (resources) {
+    const renderResources = function(resources) {
       $("#resources-wrapper").empty();
       let count = 0;
       for (const resource of resources) {
@@ -46,22 +46,22 @@ $(() => {
 });
 
 // $.ajax({
-    //   method: 'GET',
-    //   url: '/cat/UX&UI'
-    // })
-    // .done((response) => {
-    //   const $usersList = $('#users');
-    //   $usersList.empty();
+//   method: 'GET',
+//   url: '/cat/UX&UI'
+// })
+// .done((response) => {
+//   const $usersList = $('#users');
+//   $usersList.empty();
 
-    //   for(const user of response.users) {
-    //     $(`<li class="user">`).text(user.name).appendTo($usersList);
-    //   }
-    // });
-    // .done((response) => {
-    //   const $usersList = $('#users');
-    //   $usersList.empty();
+//   for(const user of response.users) {
+//     $(`<li class="user">`).text(user.name).appendTo($usersList);
+//   }
+// });
+// .done((response) => {
+//   const $usersList = $('#users');
+//   $usersList.empty();
 
-    //   for(const user of response.users) {
-    //     $(`<li class="user">`).text(user.name).appendTo($usersList);
-    //   }
-    // });
+//   for(const user of response.users) {
+//     $(`<li class="user">`).text(user.name).appendTo($usersList);
+//   }
+// });
