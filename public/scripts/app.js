@@ -55,7 +55,7 @@ $(() => {
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">${resourceObject.title}<i class="material-icons right">&times;</i></span>
         <p>${resourceObject.description}</p>
-        <p><a href="#">Read More</a></p>
+        <p><a href="/resources/details/${id}">Read More</a></p>
       </div>
     </div>
   `;
