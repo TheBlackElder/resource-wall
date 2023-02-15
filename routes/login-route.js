@@ -3,23 +3,17 @@ const router = express.Router();
 const userQueries = require("../db/queries/users");
 const bcrypt = require('bcryptjs');
 let cookieSession = require('cookie-session');
-app.use(cookieSession({
+router.use(cookieSession({
   name: 'session',
   keys: ['red rabbits juggling orange juice'],
 }));
-const bcrypt = require('bcrypt');
 
-//renders login page
-router.get('/login', (req, res) => {
-  let id = req.session.user_id;
-  const templateVars = {
-    urls: urlDatabase,
-    userID: id,
-    user: users[id]
-  };
-  return res.render("login", templateVars);
+
+// renders login page
+router.get("/login", (req, res) => {
+  console.log('--------')
+  return res.render("../views/login");
 });
-
 
 
 // Create a new user
@@ -55,10 +49,11 @@ router.post('/login', (req, res) => {
 });
 
 // logs user out , clears cookies and redirects to home page
-app.post('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   res.clearCookie('session');
   return res.redirect(`/home`);
 });
 
+module.exports = router;
 
 
