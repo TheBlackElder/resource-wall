@@ -6,7 +6,7 @@ const getComments = function (resource_id) {
   return db
     .query(sql, [resource_id])
     .then((result) => {
-      return result.rows[0];
+      return result.rows;
     })
     .catch((err) => {
       console.log(err.message);

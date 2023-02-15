@@ -38,4 +38,16 @@ router.get("/cat/:type", (req, res) => {
     });
 });
 
+router.get("/details/:id", (req, res) => {
+  const id = req.params.id;
+  resourceQueries
+    .getResourceDetailsWithId(id)
+    .then((reseource) => {
+      res.json(reseource);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;
