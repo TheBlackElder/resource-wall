@@ -40,4 +40,23 @@ const getLikesCountWithResId = function (id) {
     });
 };
 
-module.exports = { getLikesWithUserId, getLikesCountWithResId };
+const addLike = function (user_id, resource_id) {
+  const sql =
+    `
+    INSERT INTO
+    likes
+    (user_id, resource_id)
+    VALUES
+    ($1, $2);
+    `
+  return db
+    .query(sql, [user_id, resource_id])
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
+
+module.exports = { getLikesWithUserId, getLikesCountWithResId, addLike };
