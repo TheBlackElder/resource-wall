@@ -1,30 +1,89 @@
-<main>
-  <div class="login-page">
-    <h3 class="title">Login</h3>
-    <span> Sign in to continue </span>
-    <form action="/login" method="POST">
-      <div>
-        <label for="email">Email address</label>
-        <br />
-        <input type="email" name="email" placeholder="email" required />
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+      <!-- App CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
+  <link rel="stylesheet" href="/styles/resources.css" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+
+  <!-- App JS -->
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/search-bar.js"></script>
+  <script defer src="/scripts/category-filter.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.4/dist/fuse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+
+<!-- Anton Font  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+
+<!-- Montesserat -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+
+<!-- Timeago -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
+  integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+
+<!-- Materialize -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Materialize  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Font Awesome  -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+crossorigin="anonymous"
+referrerpolicy="no-referrer"
+/>
+  </head>
+  <body>
+    <main>
+      <div class="login-page">
+        <h3 class="title">Login</h3>
+        <span> Sign in to continue </span>
+        <form action="/login" method="POST">
+          <div>
+            <label for="email">Email address</label>
+            <br />
+            <input type="email" name="email" placeholder="email" required />
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <br />
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              required
+            />
+          </div>
+          <br />
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <div class="sign-up-prompt">
+          <span> Don't have an account? </span>
+          <span> Sign-up here </span>
+        </div>
       </div>
-      <div>
-        <label for="password">Password</label>
-        <br />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          required
-        />
-      </div>
-      <br />
-      <span> Forgot password? </span>
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-    <div class="sign-up-prompt">
-      <span> Don't have an account? </span>
-      <span> Sign-up here </span>
-    </div>
-  </div>
-</main>
+    </main>
+  </body>
+</html>

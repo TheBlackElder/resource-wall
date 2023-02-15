@@ -9,6 +9,18 @@ app.use(cookieSession({
 }));
 const bcrypt = require('bcrypt');
 
+//renders login page
+router.get('/login', (req, res) => {
+  let id = req.session.user_id;
+  const templateVars = {
+    urls: urlDatabase,
+    userID: id,
+    user: users[id]
+  };
+  return res.render("login", templateVars);
+});
+
+
 
 // Create a new user
 router.post('/register', (req, res) => {
@@ -47,5 +59,6 @@ app.post('/logout', (req, res) => {
   res.clearCookie('session');
   return res.redirect(`/home`);
 });
+
 
 
