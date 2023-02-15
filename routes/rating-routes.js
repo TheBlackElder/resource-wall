@@ -1,41 +1,47 @@
 const express = require("express");
 const router = express.Router();
-const resourceQueries = require("../db/queries/resources");
+const ratingQueries = require("../db/queries/ratings");
 
-router.get("/all", (req, res) => {
-  resourceQueries
-    .getAllResources()
-    .then((resources) => {
-      res.json( resources );
+//get rating for resource
+router.get("/:resource_id", (req, res) => {
+  const resource_id = req.params.resource_id;
+  ratingQueries
+    .getRatingsByResourceID(resource_id)
+    .then((ratings) => {
+      res.json(ratings);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
 });
 
-router.get("/user/:id", (req, res) => {
-  const id = req.params.id
-  resourceQueries
-    .getResourcesWithUserID(id)
-    .then((resources) => {
-      res.json(resources);
+// add rating
+router.post("/:resource_id/rate", (req, res) => {
+  const user_id = res.sessions.user_id;
+  const resource_id = req.params.resource_id;
+  const rating = event.target.rating.value;
+  ratingQueries
+    .addRating(user_id, resource_id, rating)
+    .then((ratings) => {
+      res.json(ratings);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
 });
 
-router.get("/cat/:type", (req, res) => {
-  console.log(req.params);
-  const type = req.params.type;
-  resourceQueries
-    .getResourcesWithCategory(type)
-    .then((resources) => {
-      res.json(resources);
+// delete rating
+router.post("/:resource_id/unrate", (req, res) => {
+  const rating_id = req.params.rating_id;
+  ratingQueries
+    .deleteRating(rating_id)
+    .then((ratings) => {
+      res.json(ratings);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
 });
+
 
 module.exports = router;

@@ -1,5 +1,5 @@
 $(() => {
-  const getId = function(url) {
+  const getId = function (url) {
     const regExp =
       /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
@@ -28,14 +28,17 @@ $(() => {
     }
   };
 
-  // const escape = function (str) {
-  //   let div = document.createElement("div");
-  //   div.appendChild(document.createTextNode(str));
-  //   return div.innerHTML;
-  // };
+  $(document).on("click", ".btn-floating", function (e) {
+    e.preventDefault();
+    const resourceId = $(this).attr("data-id");
+    console.log("-------------", resourceId);
+    $.post(`/api/likes/${resourceId}/`, { user_id: 1 }).done(function (data) {
+      // alert("Data Loaded: " + data);
+    });
+  });
 
   const createResourceElement = (resourceObject, contentType) => {
-    console.log(resourceObject);
+    const id = resourceObject.id;
     let $resource = `
     <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
@@ -43,7 +46,10 @@ $(() => {
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">${resourceObject.title}<i class="material-icons right">...</i></span>
-        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
+        <form class="like-form">
+          <input name="like-input" type="hidden">
+          <button class="btn-floating halfway-fab waves-effect waves-light red" data-id="${id}"><i class="fa-solid fa-heart"></i></button>
+        </form>
         <p><a href="#">${resourceObject.category}</a></p>
       </div>
       <div class="card-reveal">
@@ -56,26 +62,30 @@ $(() => {
     return $resource;
   };
 
-// category select
-  $(document).ready(function(){
-    $('select').formSelect();
+  // category select
+  $(document).ready(function () {
+    $("select").formSelect();
   });
 
   //upload button
-  $(function() {
-    $("#uploadFile").on("change", function()
-    {
-        var files = !!this.files ? this.files : [];
-        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+  $(function () {
+    $("#uploadFile").on("change", function () {
+      var files = !!this.files ? this.files : [];
+      if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
 
-        if (/^image/.test( files[0].type)){ // only image file
-            var reader = new FileReader(); // instance of the FileReader
-            reader.readAsDataURL(files[0]); // read the local file
+      if (/^image/.test(files[0].type)) {
+        // only image file
+        var reader = new FileReader(); // instance of the FileReader
+        reader.readAsDataURL(files[0]); // read the local file
 
-            reader.onloadend = function(){ // set image data as background of div
-                $("#imagePreview").css("background-image", "url("+this.result+")");
-            }
-        }
+        reader.onloadend = function () {
+          // set image data as background of div
+          $("#imagePreview").css(
+            "background-image",
+            "url(" + this.result + ")"
+          );
+        };
+      }
     });
 });
 

@@ -34,4 +34,18 @@ router.get("/user/:id", (req, res) => {
     });
 });
 
+router.post("/:resource_id", (req, res) => {
+  console.log("++++++++", req.params, req.body);
+  const { resource_id } = req.params;
+  const user_id = 1;
+  likeQueries
+    .addLike(user_id, resource_id)
+    .then((likes) => {
+      res.json(likes);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;
