@@ -7,7 +7,11 @@ const db = require("../connection");
  */
 
 const getAllResources = () => {
-  const sql = `SELECT * FROM resources`
+  const sql = `SELECT resources.*, categories.type AS category
+  FROM resources
+  JOIN categories ON
+categories.id
+ = resources.category_id `
   return db
     .query(sql)
     .then((result) => {

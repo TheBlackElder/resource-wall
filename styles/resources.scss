@@ -15,11 +15,13 @@
   justify-content: center;
   user-select: none;
   font-weight: bolder;
-  margin-right: 25px
+  margin-left: 25px;
+  margin-right: 25px;
+  flex-direction: column;
 }
 
 .resource-containers:hover {
-  border: 1px solid black;
+  border: 1px solid rgb(167, 166, 166);
   transform: scale(1.05);
 }
 
@@ -27,24 +29,40 @@
   transform: scale(0.95) rotateZ(1.7deg);
 }
 
-.res-cards {
+.card {
   margin: 15px 1.5%;
   height: 500px;
   width: 300px;
+  
 }
 
 
 .res-image {
   width: 180px;
   height:180px;
+  // object-fit: cover;
   // max-width: 100%;
 }
 
 .res-image img {
+
+  background-color: rgb(236, 236, 236);
+  border-radius: 6px 6px 0 0;
+
   width: 100%;
   height: 100%;
+  // object-fit: cover;
 }
 
 #resources-wrapper {
   display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-right: 3em;
+  padding-left: 3em;
 }
+
+// background-size: cover;
+// background-repeat: no-repeat;
+// background-position: center center;
+// height: 350px;
