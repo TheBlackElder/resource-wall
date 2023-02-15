@@ -1,5 +1,58 @@
+<div id="resource-details">
+  <div class="res-creator">
+    <i class="fa-solid fa-circle-user"></i>
+    <span>@<%= resource.username %></span>
+    <span><%= resource.created_at%></span>
+  </div>
+  <div class="res-thumbnail">
+    <img src="assets/images/art.png">
+  </div>
+  <div class="res-rating">
+    <div class="star-rating">
+      <input type="radio" name="stars" id="star-a" value="5"/>
+      <label for="star-a"></label>
+
+      <input type="radio" name="stars" id="star-b" value="4"/>
+      <label for="star-b"></label>
+
+      <input type="radio" name="stars" id="star-c" value="3"/>
+      <label for="star-c"></label>
+
+      <input type="radio" name="stars" id="star-d" value="2"/>
+      <label for="star-d"></label>
+
+      <input type="radio" name="stars" id="star-e" value="1"/>
+      <label for="star-e"></label>
+</div>
+<span><%= resource.rating %></span>
+<!-- <span>(Based on 2 ratings)</span> -->
+  </div>
+  <div class="res-content">
+    <h3><%= resource.title %></h3>
+    <a href="<%= resource.url %>"><%= resource.url %></a>
+    <p><%= resource.description %></p>
+  </div>
+  <div class="comment-section">
+    <h4>
+      Comment
+      <i class="fa-solid fa-comment"></i>
+    </h4>
+
+    <div class="add-comment">
+      <i class="fa-solid fa-circle-user"></i>
+      <span><%= resource.created_at %></span>
+      <textarea name="comment-box" id="user-comment" cols="30" rows="10"></textarea>
+      <i class="fa-solid fa-share"></i>
+    </div>
+  </div>
+</div>
+<a href="/">Back</a>
+
+
 <!-- Creating modals for resource details  -->
 
+
+<!--
 <div id="resource-modal" class="modal hidden">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -14,7 +67,7 @@
         atque, fugit doloremque nulla hic voluptas earum eveniet, nihil
         molestias debitis modi eos ab sequi minima vero quas deleniti nobis.
       </p>
-    </div>
+    </div> -->
 
     <!-- Upload img thumbnail (https://codepen.io/aertmann/pen/mrVaPx)
     (https://www.tutorialswebsite.com/topics/jquery-to-show-image-thumbnail-before-upload/) -->
@@ -26,64 +79,19 @@
         (Chrome), iOS Safari (10+)
       </p>
 
-<article class="tweets" >
-<header class="tweet-header" >
-  <div class="tweet-headerProfile">
-  <img src='${tweet.user.avatars}'>
-    <label class="tweet-username" > ${tweet.user.name} </label>
-  </div>
-  <label class="tweet-handle" >
-   ${tweet.user.handle}
-  </label>
-</header>
-<span class="tweet-body">
- ${escape(tweet.content.text)}
-</span>
-<footer class="tweet-footerIcons" >
-  <label class="tweet-time">
-    ${timeago.format(tweet.created_at)}
-  </label>
-  <div >
-    <i class="fa-solid fa-flag"></i>
-    <i class="fa-solid fa-retweet"></i>
-    <i class="fa-solid fa-heart"></i>
-  </div>
-</footer>
-</article>
-
-
-    </div> -->
-
 
   </div>
 </div>
 
-<!-- Making Cards -->
+ -->
 
-<!-- Trigger/Open The Modal -->
+ <!-- Trigger/Open The Modal
 <button id="myBtn">Open Modal</button>
 
-<!-- The Modal -->
+
 <div id="myModal" class="modal">
-  <!-- Modal content -->
+
   <div class="modal-content">
     <span class="close">&times;</span>
     <p>Some text in the Modal..</p>
   </div>
-</div>
-
-<!-- <div id="UX/UI" class="category-content">
-  <div class="col2 filterDiv UX/UI" id="cardImage1">
-
-
-          <h2 class="res-category">UX/UI</h2>
-          <img class="res-image"></img>
-          <p class="res-description"></p>
-          <p class="res-url"></p>
-
-          <form action="resources-details.ejs">
-              <button class="btn-more">Read More</button>
-          </form>
-
-      </div>
-  </div> -->

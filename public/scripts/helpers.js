@@ -1,7 +1,7 @@
-const { renderResources } = require('./app.js')
+const { renderResources } = require('./app.js');
 
 const renderSearch = (resources) => {
-  const renderResources = function (resources) {
+  const renderResources = function(resources) {
     $("#resources-wrapper").empty();
     for (const resource of resources) {
       count++;
@@ -30,7 +30,7 @@ const renderSearch = (resources) => {
 
   const loadResources = () => {
     
-  }
+  };
   renderResources();
 };
 

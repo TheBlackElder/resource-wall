@@ -9,7 +9,7 @@ const loggedUser = function (req, res) {
 };
 
 // gets single user with given email
-const getUserByEmail = function (email) {
+const getUserByEmail = function(email) {
   const sql = `SELECT profile_picture, first_name, last_name, username, bio, email FROM users WHERE email = $1;`;
   return db
     .query(sql, [email])
@@ -22,7 +22,7 @@ const getUserByEmail = function (email) {
 };
 
 // gets user info with given ID
-const getUserById = function (id) {
+const getUserById = function(id) {
   const sql = `SELECT profile_picture, first_name, last_name, username, bio, email FROM users WHERE id = $1;`;
   return db
     .query(sql, [id])
@@ -35,7 +35,7 @@ const getUserById = function (id) {
 };
 
 // add new user
-const addUser = function (user) {
+const addUser = function(user) {
   const sql = `INSERT INTO users (username, email, password, first_name, last_name, profile_picture, bio)
   VALUES ($1, $2, $3, $4, $5, $6, $7);`;
   return db
@@ -49,7 +49,7 @@ const addUser = function (user) {
 };
 
 // updates user info
-const updateUser = function (user) {
+const updateUser = function(user) {
   const sql = `UPDATE users SET first_name = $1, last_name = $2, username = , email = , profile_picture = $3, bio = $4
     WHERE id = $5;`;
   return db
@@ -63,7 +63,7 @@ const updateUser = function (user) {
 };
 
 // updates user password
-const updatePassword = function () {
+const updatePassword = function() {
   const sql = `UPDATE users SET password = $1
     WHERE username = ${req.session.username};`;
   return db
@@ -77,12 +77,12 @@ const updatePassword = function () {
 };
 
 // deletes user account
-const deleteUser = function () {
+const deleteUser = function() {
   const sql = `DELETE FROM users WHERE username = ${req.session.username};`;
   return db
     .query(sql)
     .then((result) => {
-      result
+      result;
       return res.redirect('/');
     })
     .catch((err) => {
