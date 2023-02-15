@@ -47,7 +47,7 @@ $(() => {
         <p><a href="#">${resourceObject.category}</a></p>
       </div>
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">${resourceObject.title}<i class="material-icons right">X</i></span>
+        <span class="card-title grey-text text-darken-4">${resourceObject.title}<i class="material-icons right">&times;</i></span>
         <p>${resourceObject.description}</p>
         <p><a href="#">Read More</a></p>
       </div>
@@ -78,6 +78,15 @@ $(() => {
         }
     });
 });
+
+// Open change password modal
+$(document).ready(function(){
+  $('.modal').modal();
+  instance.close();
+});
+
+
+
 
   // const createResourceElement = (resourceObject) => {
   //   let $resource = `
