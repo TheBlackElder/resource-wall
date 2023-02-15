@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
   $('.input').on('input', () => {
     $('#resources-wrapper').empty();
     let searchTerm = $('.input').val();
@@ -7,7 +7,7 @@ $(document).ready(function () {
       url: 'http://localhost:8080/resources/all',
     })
       .then((response) => {
-        console.log('All resources (10):', response)
+        console.log('All resources (10):', response);
         let options = {
           isCaseSensitive: false,
           includeScore: false,
@@ -33,7 +33,7 @@ $(document).ready(function () {
         // default to render all
         if (!searchTerm) {
           $(() => {
-            const renderResources = function (resources) {
+            const renderResources = function(resources) {
               $("#resources-wrapper").empty();
               let count = 0;
               for (const resource of resources) {
@@ -72,18 +72,18 @@ $(document).ready(function () {
         }
         const fuse = new Fuse(response, options);
         const searchResults = fuse.search(searchTerm);
-        console.log('searchbar input:', searchTerm)
-        console.log('search term', searchTerm)
-        console.log('results', fuse.search(searchTerm))
+        console.log('searchbar input:', searchTerm);
+        console.log('search term', searchTerm);
+        console.log('results', fuse.search(searchTerm));
         //////////////////////
         // render search bar results
         $(() => {
-          const renderResources = function (resources) {
+          const renderResources = function(resources) {
             $("#resources-wrapper").empty();
             let count = 0;
             for (const resource of resources) {
-              console.log('resource of resources',resource)
-              console.log('resource item', resource.item)
+              console.log('resource of resources',resource);
+              console.log('resource item', resource.item);
               count++;
               if (count <= 4) {
                 const $resource = createResourceElement(resource.item);

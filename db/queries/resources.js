@@ -7,11 +7,15 @@ const db = require("../connection");
  */
 
 const getAllResources = () => {
+<<<<<<< HEAD
+  const sql = `SELECT * FROM resources`;
+=======
   const sql = `SELECT resources.*, categories.type AS category
   FROM resources
   JOIN categories ON
 categories.id
  = resources.category_id `
+>>>>>>> master
   return db
     .query(sql)
     .then((result) => {
@@ -36,7 +40,7 @@ const getResourcesWithCategory = (category) => {
       GROUP BY resources.id, categories.id, users.username
       HAVING categories.type = $1
       ;
-      `
+      `;
   return db
     .query(sql, [category])
     .then((result) => {
@@ -67,10 +71,10 @@ const getResourcesWithUserID = (id) => {
       GROUP BY resources.id, categories.id, users.username
       HAVING resources.user_id = $1
       ;
-      `
+      `;
   return db
     .query
-      (sql,[id])
+    (sql,[id])
     .then((result) => {
       return result.rows;
     })

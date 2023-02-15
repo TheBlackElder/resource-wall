@@ -53,7 +53,7 @@ $(() => {
         <p><a href="#">${resourceObject.category}</a></p>
       </div>
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">${resourceObject.title}<i class="material-icons right">X</i></span>
+        <span class="card-title grey-text text-darken-4">${resourceObject.title}<i class="material-icons right">&times;</i></span>
         <p>${resourceObject.description}</p>
         <p><a href="#">Read More</a></p>
       </div>
@@ -87,7 +87,52 @@ $(() => {
         };
       }
     });
-  });
+});
+
+// Open change password modal
+$(document).ready(function(){
+  $('.modal').modal();
+  instance.close();
+});
+
+
+
+
+  // const createResourceElement = (resourceObject) => {
+  //   let $resource = `
+  // <div class="resource-containers">
+  // <div id="col s12 m4 l2">
+  //   <div class="res-cards">
+  //     <div class="res-image">
+  //     <img src="${resourceObject.media_url}">
+  //       <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
+  //     </div>
+  //   </div>
+  // </div>
+  // </div>
+  // `;
+  //   return $resource;
+  // };
+
+  // const createResourceElement = (resourceObject) => {
+  //   let $resource = `
+  // <div class="resource-containers">
+  // <div id="col s12 m6">
+  //   <div class="res-cards">
+  //     <div class="res-image">
+  //       <img src="${resourceObject.media_url}">
+  //       <span class="res-title">${resourceObject.title}</span>
+  //       <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+  //     </div>
+  //     <div class="res-content">
+  //       <p>${resourceObject.description}</p>
+  //     </div>
+  //   </div>
+  // </div>
+  // </div>
+  // `;
+  //   return $resource;
+  // };
 
   const loadResources = () => {
     $.get("http://localhost:8080/resources/all", (data) => {

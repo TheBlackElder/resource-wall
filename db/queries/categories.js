@@ -7,7 +7,7 @@ const db = require("../connection");
  */
 
 const getIdWithCategory = (type) => {
-  const sql = `SELECT id FROM categories WHERE type = $1;`
+  const sql = `SELECT id FROM categories WHERE type = $1;`;
   return db
     .query(sql, [type])
     .then((result) => {
@@ -25,7 +25,7 @@ const getIdWithCategory = (type) => {
  */
 
 const getCategoryWithId = (id) => {
-  const sql = `SELECT type FROM categories WHERE id = $1;`
+  const sql = `SELECT type FROM categories WHERE id = $1;`;
   return db
     .query(sql, [id])
     .then((result) => {
