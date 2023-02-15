@@ -40,15 +40,34 @@ const getLikesCountWithResId = function (id) {
     });
 };
 
-const addLike = function (user_id, resource_id) {
+const getAllLikes = function () {
   const sql =
     `
+    SELECT
+      likes.*
+    FROM likes
+    ;
+    `
+  return db
+    .query(sql)
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+const addLike = function (user_id, resource_id) {
+  const sql = `
     INSERT INTO
     likes
     (user_id, resource_id)
     VALUES
-    ($1, $2);
-    `
+    ($1, $2)
+    RETURNING *
+    ;
+    `;
   return db
     .query(sql, [user_id, resource_id])
     .then((result) => {
@@ -59,4 +78,4 @@ const addLike = function (user_id, resource_id) {
     });
 }
 
-module.exports = { getLikesWithUserId, getLikesCountWithResId, addLike };
+module.exports = { getLikesWithUserId, getLikesCountWithResId, addLike, getAllLikes };

@@ -52,7 +52,15 @@ $(document).ready(function () {
               <div class="res-cards">
                 <div class="res-image">
                 <img src="${resourceObject.media_url}">
-                  <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
+                  <div class="love">
+                    <input id="switch" type="checkbox">
+                    <label class="love-heart" for="switch">
+                      <i class="left"></i>
+                      <i class="right"></i>
+                      <i class="bottom"></i>
+                      <div class="round"></div>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -98,7 +106,7 @@ $(document).ready(function () {
             <div class="res-cards">
               <div class="res-image">
               <img src="${resourceObject.media_url}">
-                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
+              <button>
               </div>
             </div>
           </div>

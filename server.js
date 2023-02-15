@@ -55,7 +55,9 @@ app.use('/api/likes', likesApiRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+
+  const templateVars = {}
+  res.render('index', templateVars);
 });
 
 app.listen(PORT, () => {

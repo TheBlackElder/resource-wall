@@ -23,7 +23,6 @@ $(() => {
     <div class="res-cards">
       <div class="res-image">
       <img src="${resourceObject.media_url}">
-        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
       </div>
     </div>
   </div>

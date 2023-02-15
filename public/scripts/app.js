@@ -11,27 +11,36 @@ $(() => {
     }
   };
 
-  // const escape = function (str) {
-  //   let div = document.createElement("div");
-  //   div.appendChild(document.createTextNode(str));
-  //   return div.innerHTML;
-  // };
+  $(document).on("click", ".likeButton", function (e) {
+    e.preventDefault();
+    const resourceId = $(this).attr("data-id");
+
+    console.log("-------------", resourceId);
+    $.post(`/api/likes/${resourceId}/`, { user_id: 1 }).done(function (data) {
+      // alert("Data Loaded: " + data);
+    });
+  });
 
   const createResourceElement = (resourceObject) => {
+    const id = resourceObject.id;
     let $resource = `
   <div class="resource-containers">
   <div id="col s12 m4 l2">
     <div class="res-cards">
       <div class="res-image">
-      <img src="${resourceObject.media_url}">
-        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
+        <img src="${resourceObject.media_url}">
       </div>
     </div>
+    <form class="like-form">
+    <input name="like-input" type="hidden">
+    <button class="likeButton" data-id="${id}">Like</button>
+    </form>
   </div>
   </div>
   `;
     return $resource;
   };
+
 
   // const createResourceElement = (resourceObject) => {
   //   let $resource = `
