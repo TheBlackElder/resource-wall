@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const resourceQueries = require("../db/queries/resources");
 
+
 router.get("/all", (req, res) => {
   resourceQueries
     .getAllResources()
@@ -17,9 +18,9 @@ router.get("/user/:id", (req, res) => {
   const id = req.params.id;
   resourceQueries
     .getResourcesWithUserID(id)
-    .then((resource) => {
+    .then((resources) => {
+      const templateVars = {resources: resources};
       // res.json(resources);
-      const templateVars = {resource: resource[0]};
       res.render(`my-resources`, templateVars);
     })
     .catch((err) => {
@@ -51,6 +52,7 @@ router.get("/cat/:type", (req, res) => {
   }
 });
 
+// to render youtube videos for resource-details page
 const getId = function (url) {
   const regExp =
     /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -74,9 +76,25 @@ router.get("/details/:id", (req, res) => {
     });
 });
 
+// router.get("/create", (req, res) => {
+//   res.render('create-resource');
+// });
+
 router.get("/create", (req, res) => {
-  res.render('create-resource');
+  const id = req.params.id;
+  resourceQueries
+    .getResourcesWithUserID(id)
+    .then((resource) => {
+      const templateVars = {resource: resource};
+      // res.json(resources);
+      res.render(`create-resource`, templateVars);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+
 });
+
 
 router.post("/create", (req, res) => {
   const userId = req.sessions.userId;
