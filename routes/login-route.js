@@ -40,9 +40,9 @@ router.post('/', (req, res) => {
 });
 
 // logs user out , clears cookies and redirects to home page
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   res.clearCookie('session');
-  return res.redirect(`/home`);
+  return res.redirect(`/`);
 });
 
 module.exports = router;

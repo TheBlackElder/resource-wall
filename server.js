@@ -12,6 +12,10 @@ app.use(cookieSession({
   name: 'session',
   keys: ['red rabbits juggling orange juice'],
 }));
+app.use(function(req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
 app.set('view engine', 'ejs');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -39,7 +43,6 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home-routes');
 const resourcesRoutes = require('./routes/resources.js');
-
 const likesApiRoutes = require('./routes/likes-api.js');
 const loginRoute = require('./routes/login-route.js')
 // Mount all resource routes
@@ -52,6 +55,7 @@ app.use('/api/home', homeRoutes);
 app.use('/resources', resourcesRoutes);
 app.use('/api/likes', likesApiRoutes);
 app.use('/api/login', loginRoute)
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -60,15 +64,14 @@ app.use('/api/login', loginRoute)
 
 app.get('/', (req, res) => {
   console.log('111111111',req.session)
-  res.render('index', { showUserButtons: true });
+  res.render('index', { hideUserButtons: false });
 });
 
 app.get('/login', (req, res) => {
-  res.render('login', { showUserButtons: undefined });
+  res.render('login', { hideUserButtons: true });
 });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-
 
