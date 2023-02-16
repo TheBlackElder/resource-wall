@@ -1,24 +1,53 @@
-<div class="myResources-wrapper">
-  <div class="profile-info">
-    <div class="grid-65">
-      <span class="photo" title="Upload your profile picture"></span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/my-resources.css" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+
+<%- include('partials/_header') %>
+
+
+  <title>My Resources</title>
+</head>
+<body>
+  <div class="myResources-wrapper">
+    <h1>My Resources</h1>
+    <div class="profile-info">
+      <div class="grid-65">
+        <span class="photo" title="Upload your profile picture"></span>
+      </div>
+      <span><%= resource.username %></span>
     </div>
-    <span>@username_handle</span>
+    <button>Edit Profile</button>
+  <div class="res-toggle">
+    <fieldset id="switch" class="radio">
+      <input name="switch" id="on" type="radio">
+      <label for="on">Liked</label>
+      <input name="switch" id="off" type="radio">
+      <label for="off">Saved</label>
+    </fieldset>
   </div>
-  <button>Edit Profile</button>
-<div class="res-toggle">
-  <fieldset id="switch" class="radio">
-    <input name="switch" id="on" type="radio">
-    <label for="on">Liked</label>
-    <input name="switch" id="off" type="radio">
-    <label for="off">Saved</label>
-  </fieldset>
-</div>
-<!-- <div id="resources-wrapper">
+  <!-- <div id="resources-wrapper">
 
-</div> -->
+  </div> -->
 
-</div>
+  </div>
+
+</body>
+</html>
+
+
 
 <!--
 <div id="createdResources-wrapper">

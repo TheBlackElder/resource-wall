@@ -17,8 +17,10 @@ router.get("/user/:id", (req, res) => {
   const id = req.params.id;
   resourceQueries
     .getResourcesWithUserID(id)
-    .then((resources) => {
-      res.json(resources);
+    .then((resource) => {
+      // res.json(resources);
+      const templateVars = {resource: resource[0]};
+      res.render(`my-resources`, templateVars);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });

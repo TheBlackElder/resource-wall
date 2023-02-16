@@ -3,7 +3,17 @@
 }
 body {
   font-family: 'Montserrat', sans-serif;
+  font-size: large;
 }
+
+.avatar {
+  background-color: rgb(236, 236, 236);
+  border-radius: 6px 6px 0 0;
+
+  width: 100%;
+  height: 100%;
+}
+
 /* use reverse flexbox to take advantage of flex-direction: reverse */
 .star-rating {
   display: flex;
@@ -11,7 +21,7 @@ body {
   width: 160px;
   flex-direction: row-reverse;
   justify-content: space-between;
-  margin: 40px auto;
+  // margin: 40px auto;
   position: relative;
 }
 /* hide the inputs */

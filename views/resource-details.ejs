@@ -18,14 +18,14 @@
   <%- include('partials/_header') %>
 
 
-  <title>Document</title>
+  <title>LearnIt Resource</title>
 </head>
 <body>
   <div id="resource-details">
-    <h3>LearnIT Resource</h3>
+    <h1>LearnIT Resource</h1>
     <div class="res-creator">
       <div class="grid-65">
-        <span class="photo" title="Upload your profile picture"></span>
+        <img class="avatar" src="<%= resource.profile_picture %>" alt="">
       </div>
       <span>@<%= resource.username %></span>
       <span><%= resource.created_at%></span>
@@ -61,15 +61,15 @@
   <!-- <span>(Based on 2 ratings)</span> -->
     </div>
     <div class="res-content">
-      <h3><%= resource.title %></h3>
+      <h1><%= resource.title %></h1>
       <a href="<%= resource.url %>"><%= resource.url %></a>
       <p><%= resource.description %></p>
     </div>
     <div class="comment-section">
-      <h4>
+      <h2>
         Comment
         <i class="fa-solid fa-comment"></i>
-      </h4>
+      </h2>
 
       <div class="add-comment">
         <i class="fa-solid fa-circle-user"></i>
