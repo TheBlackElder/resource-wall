@@ -38,6 +38,7 @@ const homeRoutes = require('./routes/home-routes');
 const resourcesRoutes = require('./routes/resources.js');
 
 const likesApiRoutes = require('./routes/likes-api.js');
+const loginRoute = require('./routes/login-route.js')
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -46,8 +47,8 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/api/home', homeRoutes);
 app.use('/resources', resourcesRoutes);
-
 app.use('/api/likes', likesApiRoutes);
+app.use('/api/login', loginRoute)
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -55,7 +56,6 @@ app.use('/api/likes', likesApiRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  console.log('in here!!!!!')
   res.render('index', { showUserButtons: true });
 });
 
@@ -66,3 +66,5 @@ app.get('/login', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+

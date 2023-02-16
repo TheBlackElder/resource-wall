@@ -8,15 +8,6 @@ router.use(cookieSession({
   keys: ['red rabbits juggling orange juice'],
 }));
 
-
-// renders login page
-router.get("/login", (req, res) => {
-  console.log('--------')
-  const url = window.location.href;
-  return res.render("../views/login");
-});
-
-
 // Create a new user
 router.post('/register', (req, res) => {
   const user = req.body;
@@ -34,7 +25,8 @@ router.post('/register', (req, res) => {
 });
 
 //checks login credentials then
-router.post('/login', (req, res) => {
+router.post('/', (req, res) => {
+  console.log('post reqqqqqqqq')
   const {email, password} = req.body;
   userQueries
     .login(email, password)

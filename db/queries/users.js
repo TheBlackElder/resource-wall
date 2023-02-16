@@ -1,6 +1,5 @@
 const db = require("../connection");
 
-
 // check if user is logged in
 const loggedUser = function (req, res) {
   if (req.session.email) {
@@ -92,8 +91,7 @@ const deleteUser = function() {
 
 //function to checks login credentials
 const login = function (email, password) {
-  return userQueries
-    .getUserByEmail(email)
+  return getUserByEmail(email)
     .then(user => {
       if (bcrypt.compareSync(password, user.password)) {
         return user;

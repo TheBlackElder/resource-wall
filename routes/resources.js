@@ -66,7 +66,8 @@ router.get("/create", (req, res) => {
   res.render('create-resource');
 });
 
-router.post("/create", (req, res) => {
+router.post("/resources/create", (req, res) => {
+  console.log('CREATE ROUTE!!!!!')
   const userId = req.sessions.userId;
   const categoryId = req.params.category_id;
   const title = req.params.title;
