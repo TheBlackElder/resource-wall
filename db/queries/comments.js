@@ -13,4 +13,17 @@ const getComments = function(resource_id) {
     });
 };
 
-module.exports = { getComments };
+// adds comment on a resource
+const AddComment = function(user_id, resource_id, comment) {
+  const sql = `INSERT INTO comments (user_id, resource_id, comment) VALUES ($1, $2, $3)`;
+  return db
+    .query(sql, [user_id, resource_id, comment])
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+module.exports = { getComments, AddComment };
