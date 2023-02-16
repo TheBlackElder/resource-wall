@@ -8,21 +8,6 @@ router.use(cookieSession({
   keys: ['red rabbits juggling orange juice'],
 }));
 
-// Create a new user
-router.post('/register', (req, res) => {
-  const user = req.body;
-  user.password = bcrypt.hashSync(user.password, 12);
-  return userQueries
-    .addUser(user)
-    .then(user => {
-      if (!user) {
-        res.redirect('/')
-      }
-      req.session.userId = user.id;
-    })
-    .catch(e => res.send(e));
-});
-
 //checks login credentials then
 router.post('/', (req, res) => {
   console.log('password',req.body.password);
