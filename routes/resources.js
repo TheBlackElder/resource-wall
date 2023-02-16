@@ -66,20 +66,21 @@ router.get("/create", (req, res) => {
   res.render('create-resource');
 });
 
-router.post("/resources/create", (req, res) => {
-  console.log('CREATE ROUTE!!!!!')
-  const userId = req.sessions.userId;
-  const categoryId = req.params.category_id;
-  const title = req.params.title;
-  const description = req.params.description;
-  const url = req.params.url;
-  const mediaUrl = url;
-  const thumbnail = req.params.thumbnail;
-  const isVideo = req.params.is_video;
+router.post("/create", (req, res) => {
+  // const userId = req.sessions.userId;
+  const addObject = req.params.add;
+
   console.log(req.sessions);
   console.log(req.params);
+
   resourceQueries
-    .addResource(userId, categoryId, title, description, url, mediaUrl, thumbnail, isVideo)
+    .addResource(
+      userId,
+      addObject
+    )
+    .then((resource) => {
+      res.json(resource);
+    })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });

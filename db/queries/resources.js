@@ -103,7 +103,7 @@ const getResourceDetailsWithId = (id) => {
     });
 };
 
-const addResource = function (user_id, category_id, title, description, url, medial_url, thumbnail, is_video) {
+const addResource = function (user_id, add) {
   const sql = `
     INSERT INTO
     resources
@@ -114,13 +114,13 @@ const addResource = function (user_id, category_id, title, description, url, med
   return db
     .query(sql, [
       user_id,
-      category_id,
-      title,
-      description,
-      url,
-      medial_url,
-      thumbnail,
-      is_video
+      add.category_id,
+      add.title,
+      add.description,
+      add.url,
+      add.medial_url,
+      add.thumbnail,
+      add.is_video,
     ])
     .then((result) => {
       return result.rows;
