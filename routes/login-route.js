@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
     .login(req.body.email, req.body.password)
     .then(user => {
       if (user) {
-        req.session.userEmail = user.email;
+        req.session.user = user;
         res.redirect('/');
       }
     })

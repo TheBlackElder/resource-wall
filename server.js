@@ -59,10 +59,7 @@ app.use('/api/login', loginRoute)
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  const loggedUser = res.s
   console.log('111111111',req.session)
-  console.log('22222',req.body)
-  console.log('3333',res.body)
   res.render('index', { showUserButtons: true });
 });
 
