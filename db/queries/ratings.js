@@ -64,10 +64,10 @@ const addRating = function (user_id, resource_id, rating) => {
 };
 
 // deletes rating
-const deleteRating = function(user_id, resource_id, rating) => {
+const deleteRating = function(user_id, resource_id) => {
   const sql = `
     DELETE FROM ratings
-    WHERE user_id = $1 AND resource_id = $2 AND rating = $3
+    WHERE user_id = $1 AND resource_id = $2
     RETURNING *;
   `;
   return db
