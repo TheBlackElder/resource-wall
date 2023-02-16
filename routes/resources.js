@@ -68,14 +68,20 @@ router.get("/create", (req, res) => {
 
 router.post("/create", (req, res) => {
   const userId = req.sessions.userId;
-  const categoryId = req.params
-  console.log(userId);
-  console.log(categoryId);
-  // resourceQueries
-  //   .addResource(userId, categoryId, title, description, url, mediaUrl, thumbnail, is_video)
-  //   .catch((err) => {
-  //     res.status(500).json({ error: err.message });
-  //   });
+  const categoryId = req.params.category_id;
+  const title = req.params.title;
+  const description = req.params.description;
+  const url = req.params.url;
+  const mediaUrl = url;
+  const thumbnail = req.params.thumbnail;
+  const isVideo = req.params.is_video;
+  console.log(req.sessions);
+  console.log(req.params);
+  resourceQueries
+    .addResource(userId, categoryId, title, description, url, mediaUrl, thumbnail, isVideo)
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
 })
 
 module.exports = router;
