@@ -49,12 +49,22 @@ router.get("/cat/:type", (req, res) => {
   }
 });
 
+const getId = function (url) {
+  const regExp =
+    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+  return match && match[2].length === 11 ? match[2] : null;
+};
+
 router.get("/details/:id", (req, res) => {
   const id = req.params.id;
   resourceQueries
     .getResourceDetailsWithId(id)
     .then((resource) => {
       const templateVars = {resource: resource[0]};
+      if (templateVars.resource.is_video) {
+        templateVars.resource.embed = `//www.youtube.com/embed/${getId(templateVars.resource.media_url)}`;
+      }
       res.render(`resource-details`, templateVars);
     })
     .catch((err) => {
@@ -68,7 +78,7 @@ router.get("/create", (req, res) => {
 
 router.post("/create", (req, res) => {
   const userId = req.sessions.userId;
-  const categoryId = req.params
+  const categoryId = req.params;
   console.log(userId);
   console.log(categoryId);
   // resourceQueries

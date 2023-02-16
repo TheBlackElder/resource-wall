@@ -1,4 +1,9 @@
-
+#resource-details {
+  margin-top: 150px;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+}
 /* use reverse flexbox to take advantage of flex-direction: reverse */
 .star-rating {
   display: flex;
