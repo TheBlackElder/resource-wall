@@ -43,7 +43,7 @@ $(() => {
     console.log(resourceObject);
     const id = resourceObject.id;
     let $resource = `
-        <div class="card">
+        <div class="card myCustom">
         <div class="card-image waves-effect waves-block waves-light">
         ${contentType}
         </div>

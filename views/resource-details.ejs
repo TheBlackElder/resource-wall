@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <%- include('partials/_header') %>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +16,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 
-  <%- include('partials/_header') %>
+<script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+<script type="text/javascript" src="/scripts/comments.js"></script>
+
 
 
   <title>LearnIt Resource</title>
 </head>
 <body>
+
   <div id="resource-details">
     <h1>LearnIT Resource</h1>
     <div class="res-creator">
@@ -65,67 +69,9 @@
       <a href="<%= resource.url %>"><%= resource.url %></a>
       <p><%= resource.description %></p>
     </div>
-    <div class="comment-section">
-      <h2>
-        Comment
-        <i class="fa-solid fa-comment"></i>
-      </h2>
-
-      <div class="add-comment">
-        <i class="fa-solid fa-circle-user"></i>
-        <span><%= resource.created_at %></span>
-        <textarea name="comment-box" id="user-comment" cols="30" rows="10"></textarea>
-        <i class="fa-solid fa-share"></i>
-      </div>
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/comments.js"></script>
-  <title>Document</title>
-</head>
-<body>
-  <div id="resource-details">
-    <div class="res-creator">
-      <i class="fa-solid fa-circle-user"></i>
-      <span>@<%= resource.username %></span>
-      <span><%= resource.created_at%></span>
-    </div>
-    <div class="res-thumbnail">
-      <img src="assets/images/art.png">
-    </div>
-    <div class="res-rating">
-      <div class="star-rating">
-        <input type="radio" name="stars" id="star-a" value="5"/>
-        <label for="star-a"></label>
-
-        <input type="radio" name="stars" id="star-b" value="4"/>
-        <label for="star-b"></label>
-
-        <input type="radio" name="stars" id="star-c" value="3"/>
-        <label for="star-c"></label>
-
-        <input type="radio" name="stars" id="star-d" value="2"/>
-        <label for="star-d"></label>
-
-        <input type="radio" name="stars" id="star-e" value="1"/>
-        <label for="star-e"></label>
-  </div>
-  <a href="/">Back</a>
-  <span><%= resource.rating %></span>
-  <!-- <span>(Based on 2 ratings)</span> -->
-    </div>
-    <div class="res-content">
-      <h3><%= resource.title %></h3>
-      <a href="<%= resource.url %>"><%= resource.url %></a>
-      <p><%= resource.description %></p>
-    </div>
-
     <div id="comments-container">
     </div>
-
-  </div>
-  <a href="/">Back</a>
-</body>
-</html>
-
+    <a href="/">Back</a>
 
 </body>
 </html>

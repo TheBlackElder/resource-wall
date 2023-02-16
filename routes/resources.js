@@ -19,8 +19,8 @@ router.get("/user/:id", (req, res) => {
   resourceQueries
     .getResourcesWithUserID(id)
     .then((resources) => {
-      const templateVars = {resources: resources};
-      // res.json(resources);
+      const templateVars = {resources: resources,
+        hideUserButtons: false };
       res.render(`my-resources`, templateVars);
     })
     .catch((err) => {
@@ -65,7 +65,8 @@ router.get("/details/:id", (req, res) => {
   resourceQueries
     .getResourceDetailsWithId(id)
     .then((resource) => {
-      const templateVars = {resource: resource[0]};
+      const templateVars = {resource: resource[0],
+        hideUserButtons: false };
       if (templateVars.resource.is_video) {
         templateVars.resource.embed = `//www.youtube.com/embed/${getId(templateVars.resource.media_url)}`;
       }
@@ -85,7 +86,8 @@ router.get("/create", (req, res) => {
   resourceQueries
     .getResourcesWithUserID(id)
     .then((resource) => {
-      const templateVars = {resource: resource};
+      const templateVars = {resource: resource,
+        hideUserButtons: false };
       // res.json(resources);
       res.render(`create-resource`, templateVars);
     })
@@ -97,17 +99,6 @@ router.get("/create", (req, res) => {
 
 
 router.post("/create", (req, res) => {
-<<<<<<< HEAD
-  const userId = req.sessions.userId;
-  const categoryId = req.params;
-  console.log(userId);
-  console.log(categoryId);
-  // resourceQueries
-  //   .addResource(userId, categoryId, title, description, url, mediaUrl, thumbnail, is_video)
-  //   .catch((err) => {
-  //     res.status(500).json({ error: err.message });
-  //   });
-=======
   const userId = req.sessions.id;
   const addObject = req.params.add;
 
@@ -125,7 +116,6 @@ router.post("/create", (req, res) => {
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
->>>>>>> master
 })
 
 module.exports = router;

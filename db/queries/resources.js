@@ -65,7 +65,7 @@ const getResourcesWithUserID = (id) => {
       FROM resources
       JOIN users ON users.id = resources.user_id
       JOIN categories ON categories.id = resources.category_id
-      GROUP BY resources.id, categories.id, users.username
+      GROUP BY resources.id, categories.id, users.username, users.profile_picture
       HAVING resources.user_id = $1
       ;
       `;
@@ -91,7 +91,7 @@ const getResourceDetailsWithId = (id) => {
       JOIN users ON users.id = resources.user_id
       LEFT JOIN ratings ON resources.id = ratings.resource_id
       WHERE resources.id = $1
-      GROUP BY resources.id, users.username
+      GROUP BY resources.id, users.username, users.profile_picture
       ;
     `;
   return db
