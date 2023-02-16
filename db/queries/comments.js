@@ -1,8 +1,8 @@
 const db = require("../connection");
 
 // gets all comments on a resource
-const getComments = function(resource_id) {
-  const sql = `SELECT * FROM comments JOIN resources ON resources.id = comments.resource_id WHERE resources.id = $1`;
+const getCommentsByResourceId = function(resource_id) {
+  const sql = `SELECT comments.*, users.username AS username FROM comments JOIN users ON user_id = users.id WHERE resource_id = $1;`;
   return db
     .query(sql, [resource_id])
     .then((result) => {
@@ -26,4 +26,4 @@ const AddComment = function(user_id, resource_id, comment) {
     });
 };
 
-module.exports = { getComments, AddComment };
+module.exports = { getCommentsByResourceId, AddComment };
