@@ -33,7 +33,7 @@ $(() => {
     e.preventDefault();
     const resourceId = $(this).attr("data-id");
     console.log("-------------", resourceId);
-    $.post(`/api/likes/${resourceId}/`, { user_id: 1 }).done(function (data) {
+    $.post(`/api/likes/${resourceId}/`, { user_id: $('#userId').val() }).done(function (data) {
       // alert("Data Loaded: " + data);
     });
   });

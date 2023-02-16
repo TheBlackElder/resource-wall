@@ -59,6 +59,7 @@ const getResourcesWithUserID = (id) => {
         resources.*,
         resources.user_id AS user_id,
         users.username AS user,
+        users.profile_picture AS profile_picture,
         category_id,
         categories.type AS category
       FROM resources
@@ -84,6 +85,7 @@ const getResourceDetailsWithId = (id) => {
     SELECT
       resources.*,
       users.username AS username,
+      users.profile_picture AS profile_picture,
       (SELECT AVG(rating) FROM ratings WHERE resources.id = ratings.resource_id) AS rating
       FROM resources
       JOIN users ON users.id = resources.user_id
