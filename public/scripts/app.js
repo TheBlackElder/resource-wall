@@ -16,7 +16,7 @@ $(() => {
         if (resource.is_video) {
           const videoId = getId(resource.media_url);
           contentType = `<div class="video-container card-image waves-effect waves-block waves-light">
-          <iframe width="853" height="480" src="//www.youtube.com/embed/ ${videoId}" frameborder="0" allowfullscreen></iframe>
+          <iframe width="853" height="480" src="//www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
       </div>`;
         } else {
           contentType = `<img class="activator" src="${resource.media_url}"></img>`;
