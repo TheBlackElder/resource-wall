@@ -59,6 +59,7 @@ const getResourcesWithUserID = (id) => {
         resources.*,
         resources.user_id AS user_id,
         users.username AS user,
+        users.profile_picture AS profile_picture,
         category_id,
         categories.type AS category
       FROM resources
@@ -84,6 +85,7 @@ const getResourceDetailsWithId = (id) => {
     SELECT
       resources.*,
       users.username AS username,
+      users.profile_picture AS profile_picture,
       (SELECT AVG(rating) FROM ratings WHERE resources.id = ratings.resource_id) AS rating
       FROM resources
       JOIN users ON users.id = resources.user_id
@@ -103,7 +105,7 @@ const getResourceDetailsWithId = (id) => {
     });
 };
 
-const addResource = function (user_id, category_id, title, description, url, medial_url, thumbnail, is_video) {
+const addResource = function (user_id, add) {
   const sql = `
     INSERT INTO
     resources
@@ -114,13 +116,13 @@ const addResource = function (user_id, category_id, title, description, url, med
   return db
     .query(sql, [
       user_id,
-      category_id,
-      title,
-      description,
-      url,
-      medial_url,
-      thumbnail,
-      is_video
+      add.category_id,
+      add.title,
+      add.description,
+      add.url,
+      add.medial_url,
+      add.thumbnail,
+      add.is_video,
     ])
     .then((result) => {
       return result.rows;

@@ -8,15 +8,6 @@ router.use(cookieSession({
   keys: ['red rabbits juggling orange juice'],
 }));
 
-
-// renders login page
-router.get("/login", (req, res) => {
-  console.log('--------')
-  const url = window.location.href;
-  return res.render("../views/login");
-});
-
-
 // Create a new user
 router.post('/register', (req, res) => {
   const user = req.body;
@@ -25,8 +16,7 @@ router.post('/register', (req, res) => {
     .addUser(user)
     .then(user => {
       if (!user) {
-        res.send({ error: "error" });
-        return;
+        res.redirect('/')
       }
       req.session.userId = user.id;
     })
@@ -34,25 +24,25 @@ router.post('/register', (req, res) => {
 });
 
 //checks login credentials then
-router.post('/login', (req, res) => {
-  const {email, password} = req.body;
+router.post('/', (req, res) => {
+  console.log('password',req.body.password);
+  const hashedpw = bcrypt.hashSync(req.body.password, 12);
+  console.log('hashed',hashedpw);
   userQueries
-    .login(email, password)
+    .login(req.body.email, req.body.password)
     .then(user => {
-      if (!user) {
-        res.send({ error: "error"});
-        return;
+      if (user) {
+        req.session.user = user;
+        res.redirect('/');
       }
-      req.session.userId = user.id;
-      res.redirect('/home')
     })
     .catch(e => res.send(e));
 });
 
 // logs user out , clears cookies and redirects to home page
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   res.clearCookie('session');
-  return res.redirect(`/home`);
+  return res.redirect(`/`);
 });
 
 module.exports = router;

@@ -5,10 +5,17 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
-
 const PORT = process.env.PORT || 8080;
 const app = express();
-
+let cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['red rabbits juggling orange juice'],
+}));
+app.use(function(req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
 app.set('view engine', 'ejs');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -37,7 +44,9 @@ const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home-routes');
 const resourcesRoutes = require('./routes/resources.js');
 
+const commentsApiRoutes = require('./routes/comments-api')
 const likesApiRoutes = require('./routes/likes-api.js');
+const loginRoute = require('./routes/login-route.js')
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -47,7 +56,10 @@ app.use('/users', usersRoutes);
 app.use('/api/home', homeRoutes);
 app.use('/resources', resourcesRoutes);
 
+app.use('/api/comments', commentsApiRoutes);
 app.use('/api/likes', likesApiRoutes);
+app.use('/api/login', loginRoute)
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -55,14 +67,15 @@ app.use('/api/likes', likesApiRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  console.log('in here!!!!!')
-  res.render('index', { showUserButtons: true });
+  console.log('111111111',req.session)
+  res.render('index', { hideUserButtons: false });
 });
 
 app.get('/login', (req, res) => {
-  res.render('login', { showUserButtons: undefined });
+  res.render('login', { hideUserButtons: true });
 });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+

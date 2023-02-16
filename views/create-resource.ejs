@@ -29,7 +29,7 @@
     <span>@username_handle</span>
   </div>
 
-<form class="col s12" id="new-resource-form" method="POST" action="/create">
+<form class="col s12" id="new-resource-form" method="POST" action="/resources/create">
 <div class="category-dropdown">
   <div class="input-field col s12">
     <select>
@@ -74,9 +74,6 @@
       <span>Upload thumbnail</span>
       <input type="file" name="thumbnail">
     </div> -->
-    <div class="file-path-wrapper">
-      <input class="file-path validate" type="text">
-    </div>
   </div>
 
   <div class="switch">
@@ -87,7 +84,7 @@
     </label>
   </div>
 
-  <button type="submit" name="">
+  <button type="submit" name="create">
     Create
   </button>
 </form>

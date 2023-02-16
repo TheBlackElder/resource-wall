@@ -97,6 +97,7 @@ router.get("/create", (req, res) => {
 
 
 router.post("/create", (req, res) => {
+<<<<<<< HEAD
   const userId = req.sessions.userId;
   const categoryId = req.params;
   console.log(userId);
@@ -106,6 +107,25 @@ router.post("/create", (req, res) => {
   //   .catch((err) => {
   //     res.status(500).json({ error: err.message });
   //   });
+=======
+  const userId = req.sessions.id;
+  const addObject = req.params.add;
+
+  console.log(req.sessions);
+  console.log(req.params);
+
+  resourceQueries
+    .addResource(
+      userId,
+      addObject
+    )
+    .then((resource) => {
+      res.json(resource);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+>>>>>>> master
 })
 
 module.exports = router;
