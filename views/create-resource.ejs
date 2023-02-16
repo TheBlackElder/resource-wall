@@ -3,30 +3,62 @@
     <i class="fa-solid fa-circle-user"></i>
     <span>@username_handle</span>
   </div>
-  <div class="res-thumbnail">
-    <div id="imagePreview"></div>
-<input id="uploadFile" type="file" name="image" class="img" />
-  </div>
 
-  <div class="res-content">
-    <h3>Dream Job</h3>
-    <a href="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0">//www.youtube.com/embed/Q8TXgCzxEnw?rel=0</a>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam recusandae amet commodi deleniti error voluptatem enim, non molestias nam dignissimos, eum possimus molestiae rerum voluptatibus modi reiciendis tenetur laudantium fugit!</p>
+<div class="category-dropdown">
+  <div class="input-field col s12">
+    <select>
+      <option value="" disabled selected>Choose category</option>
+      <option value="1">Web Development</option>
+      <option value="2">UX/UI</option>
+      <option value="3">Cybersecurity</option>
+      <option value="4">AI</option>
+      <option value="5">Blockchain</option>
+    </select>
+    <label>Categories</label>
   </div>
-  <div class="category-dropdown">
+</div>
+
+<form class="col s12" id="new-resource-form">
+  <div class="row">
     <div class="input-field col s12">
-      <select>
-        <option value="" disabled selected>Choose category</option>
-        <option value="1">UX/UI</option>
-        <option value="2">Cybersecurity</option>
-        <option value="3">AI</option>
-        <option value="2">Web Development</option>
-        <option value="3">Blockchain</option>
-      </select>
-      <label>Categories</label>
+      <input id="title" type="text" class="validate" name="title" required />
+      <label for="title">Title</label>
     </div>
   </div>
-  <button>Create</button>
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="description" type="text" class="validate" name="description" required />
+      <label for="description">Description</label>
+    </div>
   </div>
-</div>
-</div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="url" type="text" class="validate" name="url" required />
+      <label for="url">URL</label>
+    </div>
+  </div>
+
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>Upload thumbnail</span>
+      <input type="file" name="thumbnail">
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path validate" type="text">
+    </div>
+  </div>
+
+  <div class="switch">
+    <label>
+      <input type="checkbox" name="is_video"/>
+      <span class="lever"></span>
+      Is it a video?
+    </label>
+  </div>
+
+  <button type="submit" name="">
+    Create
+  </button>
+</form>
+<a href="/">Back</a>

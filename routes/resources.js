@@ -62,4 +62,9 @@ router.get("/details/:id", (req, res) => {
     });
 });
 
+router.get("/create", (req, res) => {
+  res.render('create-resource');
+});
+
+
 module.exports = router;
