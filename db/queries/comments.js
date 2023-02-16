@@ -13,6 +13,18 @@ const getCommentsByResourceId = function(resource_id) {
     });
 };
 
+const getComments = function() {
+  const sql = `SELECT comments.*, users.username AS username FROM comments JOIN users ON user_id = users.id;`;
+  return db
+    .query(sql, [resource_id])
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
 // adds comment on a resource
 const AddComment = function(user_id, resource_id, comment) {
   const sql = `INSERT INTO comments (user_id, resource_id, comment) VALUES ($1, $2, $3)`;
@@ -26,4 +38,4 @@ const AddComment = function(user_id, resource_id, comment) {
     });
 };
 
-module.exports = { getCommentsByResourceId, AddComment };
+module.exports = { getCommentsByResourceId, AddComment, getComments };
