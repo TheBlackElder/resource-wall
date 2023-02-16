@@ -7,9 +7,11 @@
       <span>LearnIT</span>
     </div>
     <div class="create-button">
+      <% if (user) {%>
       <a href="/resources/create">
         <button class="btn-create" type="submit">Create</button>
       </a>
+      <% } %>
     </div>
     <div id="search-container">
       <div class="search-bar">
@@ -23,17 +25,22 @@
         <input placeholder="Search" type="search" class="input" id="input" autofocus />
       </div>
     </div>
-    <% if (typeof showUserButtons !== "undefined") { %>
-      <div class="user-info">
-        <a href="/login">
-          <button class="btn-login" type="submit">Login</button>
-        </a>
-        <a href="/register">
-          <button class="btn-register" type="submit">Register</button>
-        </a>
-        <a href="/">
+
+    <% if (hideUserButtons) { %>
+      <% } else { %>
+        <% if (!user) { %>
+        <div class="user-info">
+          <a href="/login">
+            <button class="btn-login" type="submit">Login</button>
+          </a>
+          <a href="/register">
+            <button class="btn-register" type="submit">Register</button>
+          </a>
+          <% } else { %>
+        <a href="/api/login/logout">
           <button class="btn-logout" type="submit">Logout</button>
         </a>
+        <% } %>
       </div>
     <% } %>
   </nav>
