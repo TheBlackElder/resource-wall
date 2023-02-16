@@ -66,5 +66,16 @@ router.get("/create", (req, res) => {
   res.render('create-resource');
 });
 
+router.post("/create", (req, res) => {
+  const userId = req.sessions.userId;
+  const categoryId = req.params
+  console.log(userId);
+  console.log(categoryId);
+  // resourceQueries
+  //   .addResource(userId, categoryId, title, description, url, mediaUrl, thumbnail, is_video)
+  //   .catch((err) => {
+  //     res.status(500).json({ error: err.message });
+  //   });
+})
 
 module.exports = router;
