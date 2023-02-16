@@ -17,23 +17,5 @@ router.get("/", (req, res) => {
     });
 });
 
-// router.get("/", (req, res) => {
-//   const id = req.params.resource_id;
-//   let num = 1
-//   commentQueries
-//     .getComments(id)
-//     .then((comments) => {
-//       comments.forEach((comment) => {
-//         console.log(comment);
-//         num++;
-//         console.log(num);
-//         // Do something with each comment here
-//       });
-//     })
-//     .catch((err) => {
-//       res.status(500).json({ error: err.message });
-//     });
-// });
-
 
 module.exports = router;

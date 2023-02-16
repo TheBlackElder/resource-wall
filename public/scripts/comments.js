@@ -1,6 +1,8 @@
 $(() => {
   const loadComments = () => {
-    $.get(`http://localhost:8080/api/comments/?resource_id=6`, (data) => {
+    const urlArray = window.location.href.split("/");
+    const resourceId = urlArray[urlArray.length - 1];
+    $.get(`http://localhost:8080/api/comments/?resource_id=${resourceId}`, (data) => {
       console.log("data: ", data);
       renderComments(data);
     });
