@@ -1,8 +1,15 @@
 <header>
   <nav class="navbar">
     <div class="home-logo">
-      <img class="logo" src="assets/images/LearnIT-logo.png" alt="">
+      <a href="/">
+        <img class="logo" src="assets/images/LearnIT-logo.png" alt="">
+      </a>
       <span>LearnIT</span>
+    </div>
+    <div class="create-button">
+      <a href="/resources/create">
+        <button class="btn-create" type="submit">Create</button>
+      </a>
     </div>
     <div id="search-container">
       <div class="search-bar">
@@ -18,9 +25,15 @@
     </div>
     <% if (typeof showUserButtons !== "undefined") { %>
       <div class="user-info">
-        <button class="btn-login" type="submit">Login</button>
-        <button class="btn-register" type="submit">Register</button>
-        <button class="btn-logout" type="submit">Logout</button>
+        <a href="/login">
+          <button class="btn-login" type="submit">Login</button>
+        </a>
+        <a href="/register">
+          <button class="btn-register" type="submit">Register</button>
+        </a>
+        <a href="/">
+          <button class="btn-logout" type="submit">Logout</button>
+        </a>
       </div>
     <% } %>
   </nav>
