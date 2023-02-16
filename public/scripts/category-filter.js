@@ -30,15 +30,6 @@ $(() => {
     }
   };
 
-  $(document).on("click", ".btn-floating", function (e) {
-    e.preventDefault();
-    const resourceId = $(this).attr("data-id");
-    console.log("-------------", resourceId);
-    $.post(`/api/likes/${resourceId}/`, { user_id: 1 }).done(function (data) {
-      // alert("Data Loaded: " + data);
-    });
-  });
-
   const createResourceElement = (resourceObject, contentType) => {
     console.log(resourceObject);
     const id = resourceObject.id;
