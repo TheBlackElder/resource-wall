@@ -9,7 +9,7 @@
   width: 100%;
   padding-left: 1.5em;
   padding-right: 1.5em;
-  position: absolute;
+  position: fixed;
   top: 0;
 }
 
@@ -123,8 +123,9 @@ button:active {
   width: 100%;
   padding-left: 1.5em;
   padding-right: 1.5em;
-  position: absolute;
-  margin-bottom: 58em;
+  margin-top: 120px;
+  position: fixed;
+  z-index: 5;
 }
 
 .col {

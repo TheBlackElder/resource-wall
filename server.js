@@ -55,11 +55,12 @@ app.use('/api/likes', likesApiRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  console.log('in here!!!!!')
+  res.render('index', { showUserButtons: true });
 });
 
-app.get('/resource-details', (req, res) => {
-  res.render('resource-details');
+app.get('/login', (req, res) => {
+  res.render('login', { showUserButtons: undefined });
 });
 
 app.listen(PORT, () => {

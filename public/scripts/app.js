@@ -16,7 +16,8 @@ $(() => {
         if (resource.is_video) {
           const videoId = getId(resource.media_url);
           contentType = `<div class="video-container card-image waves-effect waves-block waves-light">
-          <iframe width="853" height="480" src="//www.youtube.com/embed/ ${videoId}" frameborder="0" allowfullscreen></iframe>
+          <iframe width="853" height="480"
+          src="//www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
       </div>`;
         } else {
           contentType = `<img class="activator" src="${resource.media_url}"></img>`;
@@ -40,7 +41,7 @@ $(() => {
   const createResourceElement = (resourceObject, contentType) => {
     const id = resourceObject.id;
     let $resource = `
-    <div class="card">
+    <div class="card myCustom">
       <div class="card-image waves-effect waves-block waves-light">
      ${contentType}
       </div>
@@ -55,7 +56,7 @@ $(() => {
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">${resourceObject.title}<i class="material-icons right">&times;</i></span>
         <p>${resourceObject.description}</p>
-        <p><a href="#">Read More</a></p>
+        <p><a href="/resources/details/${id}">Read More</a></p>
       </div>
     </div>
   `;

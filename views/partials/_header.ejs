@@ -16,12 +16,12 @@
         <input placeholder="Search" type="search" class="input" id="input" autofocus />
       </div>
     </div>
-    <div class="user-info">
-      <button class="btn-login" type="submit">Login</button>
-      <button class="btn-register" type="submit">Register</button>
-      <button class="btn-logout" type="submit">Logout</button>
-    </div>
+    <% if (typeof showUserButtons !== "undefined") { %>
+      <div class="user-info">
+        <button class="btn-login" type="submit">Login</button>
+        <button class="btn-register" type="submit">Register</button>
+        <button class="btn-logout" type="submit">Logout</button>
+      </div>
+    <% } %>
   </nav>
 </header>
-
-

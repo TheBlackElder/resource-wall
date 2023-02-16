@@ -29,8 +29,8 @@
 //   transform: scale(0.95) rotateZ(1.7deg);
 // }
 
-.card {
-  margin: 15px 1.5%;
+.card.myCustom {
+  margin: 15px 25px !important;
   height: 500px;
   width: 300px;
 
@@ -60,6 +60,7 @@
   margin-right: 5%;
   padding-right: 3em;
   padding-left: 3em;
+  margin-top: 300px;
 }
 
 // background-size: cover;
