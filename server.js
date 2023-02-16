@@ -5,10 +5,13 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
-
 const PORT = process.env.PORT || 8080;
 const app = express();
-
+let cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['red rabbits juggling orange juice'],
+}));
 app.set('view engine', 'ejs');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -56,6 +59,10 @@ app.use('/api/login', loginRoute)
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
+  const loggedUser = res.s
+  console.log('111111111',req.session)
+  console.log('22222',req.body)
+  console.log('3333',res.body)
   res.render('index', { showUserButtons: true });
 });
 

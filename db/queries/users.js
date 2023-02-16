@@ -1,4 +1,5 @@
 const db = require("../connection");
+const bcrypt = require('bcryptjs');
 
 // check if user is logged in
 const loggedUser = function (req, res) {
@@ -9,7 +10,7 @@ const loggedUser = function (req, res) {
 
 // gets single user with given email
 const getUserByEmail = function(email) {
-  const sql = `SELECT profile_picture, first_name, last_name, username, bio, email FROM users WHERE email = $1;`;
+  const sql = `SELECT profile_picture, first_name, last_name, username, bio, email, password FROM users WHERE email = $1;`;
   return db
     .query(sql, [email])
     .then((result) => {
@@ -94,7 +95,8 @@ const login = function (email, password) {
   return getUserByEmail(email)
     .then(user => {
       if (bcrypt.compareSync(password, user.password)) {
-        return user;
+        console.log('login is true')
+        return user
       }
       return null;
     });

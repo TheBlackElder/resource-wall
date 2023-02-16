@@ -16,8 +16,7 @@ router.post('/register', (req, res) => {
     .addUser(user)
     .then(user => {
       if (!user) {
-        res.send({ error: "error" });
-        return;
+        res.redirect('/')
       }
       req.session.userId = user.id;
     })
@@ -26,17 +25,16 @@ router.post('/register', (req, res) => {
 
 //checks login credentials then
 router.post('/', (req, res) => {
-  console.log('post reqqqqqqqq')
-  const {email, password} = req.body;
+  console.log('password',req.body.password);
+  const hashedpw = bcrypt.hashSync(req.body.password, 12);
+  console.log('hashed',hashedpw);
   userQueries
-    .login(email, password)
+    .login(req.body.email, req.body.password)
     .then(user => {
-      if (!user) {
-        res.send({ error: "error"});
-        return;
+      if (user) {
+        req.session.userEmail = user.email;
+        res.redirect('/');
       }
-      req.session.userId = user.id;
-      res.redirect('/home')
     })
     .catch(e => res.send(e));
 });
