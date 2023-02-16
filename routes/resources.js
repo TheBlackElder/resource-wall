@@ -67,7 +67,7 @@ router.get("/create", (req, res) => {
 });
 
 router.post("/create", (req, res) => {
-  // const userId = req.sessions.userId;
+  const userId = req.sessions.id;
   const addObject = req.params.add;
 
   console.log(req.sessions);

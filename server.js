@@ -43,6 +43,8 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home-routes');
 const resourcesRoutes = require('./routes/resources.js');
+
+const commentsApiRoutes = require('./routes/comments-api')
 const likesApiRoutes = require('./routes/likes-api.js');
 const loginRoute = require('./routes/login-route.js')
 // Mount all resource routes
@@ -53,6 +55,8 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/api/home', homeRoutes);
 app.use('/resources', resourcesRoutes);
+
+app.use('/api/comments', commentsApiRoutes);
 app.use('/api/likes', likesApiRoutes);
 app.use('/api/login', loginRoute)
 
