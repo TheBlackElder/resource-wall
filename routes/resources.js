@@ -67,9 +67,9 @@ router.get("/create", (req, res) => {
 });
 
 router.post("/create", (req, res) => {
-  const userId = req.sessions.userId;
+  // const userId = req.sessions.userId;
   const categoryId = req.params
-  console.log(userId);
+  // console.log(userId);
   console.log(categoryId);
   // resourceQueries
   //   .addResource(userId, categoryId, title, description, url, mediaUrl, thumbnail, is_video)
