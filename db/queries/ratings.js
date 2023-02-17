@@ -1,10 +1,10 @@
 const db = require("../connection");
 
 // gets rating for resource
-const getRatingsByResourceID = function (resourceID) {
-  const sql = `SELECT AVG(rating) FROM ratings WHERE resources_id = $1`
+const getRatingsByResourceID = function (resource_id) {
+  const sql = `SELECT ROUND( AVG(rating)::numeric, 2 ) AS rating FROM ratings WHERE resource_id = $1`;
   return db
-    .query(sql, [resource])
+    .query(sql, [resource_id])
     .then((result) => {
       return result.rows[0];
     })
@@ -14,10 +14,10 @@ const getRatingsByResourceID = function (resourceID) {
 };
 
 // get ratings of user
-const getRatingsByUserID = function (resourceID) {
-  const sql = `SELECT AVG(rating) FROM ratings WHERE user_id = $1`
+const getRatingsByUserID = function (resource_id) {
+  const sql = `SELECT ROUND( AVG(rating)::numeric, 2 ) AS rating FROM ratings WHERE user_id = $1`;
   return db
-    .query(sql, [resource])
+    .query(sql, [resource_id])
     .then((result) => {
       return result.rows[0];
     })
@@ -47,7 +47,7 @@ const getRatingsByUserID = function (resourceID) {
 // };
 
 // adds rating to table
-const addRating = function (user_id, resource_id, rating) => {
+const addRating = function (user_id, resource_id, rating)  {
   const sql = `
   INSERT INTO ratings (user_id, resource_id, rating)
   VALUES($1, $2, $3)
@@ -64,7 +64,7 @@ const addRating = function (user_id, resource_id, rating) => {
 };
 
 // deletes rating
-const deleteRating = function(user_id, resource_id) => {
+const deleteRating = function(user_id, resource_id) {
   const sql = `
     DELETE FROM ratings
     WHERE user_id = $1 AND resource_id = $2

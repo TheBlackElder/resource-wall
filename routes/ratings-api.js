@@ -3,8 +3,8 @@ const router = express.Router();
 const ratingQueries = require("../db/queries/ratings");
 
 //get rating for resource
-router.get("/resources/details/:resource_id", (req, res) => {
-  const id = req.params.resource_id;
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
   ratingQueries
     .getRatingsByResourceID(id)
     .then((ratings) => {
@@ -16,10 +16,12 @@ router.get("/resources/details/:resource_id", (req, res) => {
 });
 
 // add rating
-router.post("/resources/details/:resource_id/rate", (req, res) => {
-  const user_id = res.sessions.user_id;
+router.post("/rate", (req, res) => {
+  const user_id = res.sessions.user.id;
   const resource_id = req.params.resource_id;
   const rating = req.body
+  console.log("req.body", req.body);
+  console.log("req.params", req.params);
   ratingQueries
     .addRating(user_id, resource_id, rating)
     .then((ratings) => {
@@ -31,8 +33,8 @@ router.post("/resources/details/:resource_id/rate", (req, res) => {
 });
 
 // delete rating
-router.post("/resources/details/:resource_id/unrate", (req, res) => {
-  const user_id = res.sessions.user_id;
+router.post("/rate", (req, res) => {
+  const user_id = res.sessions.user.id;
   const resource_id = req.params.resource_id;
   ratingQueries
     .deleteRating(user_id, rating_id)

@@ -86,7 +86,7 @@ const getResourceDetailsWithId = (id) => {
       resources.*,
       users.username AS username,
       users.profile_picture AS profile_picture,
-      (SELECT AVG(rating) FROM ratings WHERE resources.id = ratings.resource_id) AS rating
+      (SELECT ROUND( AVG(rating)::numeric, 2 ) FROM ratings WHERE resources.id = ratings.resource_id) AS rating
       FROM resources
       JOIN users ON users.id = resources.user_id
       LEFT JOIN ratings ON resources.id = ratings.resource_id
