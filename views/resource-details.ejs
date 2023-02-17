@@ -30,10 +30,8 @@
     <h1>LearnIT Resource</h1>
     <div class="res-creator">
       <div class="grid-65">
-        <% if (user) { %>
-        <img class="avatar" src="<%= user.profile_picture %>" alt="">
+        <img class="avatar" src="<%= resource.profile_picture %>" alt="">
       </div>
-      <% }%>
       <span>@<%= resource.username %></span>
       <span><%= resource.created_at%></span>
     </div>
@@ -86,19 +84,19 @@
         <div class="grid-65">
           <% if (user) { %>
           <img class="avatar" src="<%= user.profile_picture %>" alt="">
-          <span>@<%= resource.username %></span>
+          <span>@<%= user.username %></span>
+          <i class="fa-solid fa-comment"></i>
+          <form id="post-comments" action="/comments" method="POST">
+            <textarea name="text" id="res-comment" placeholder="What have you learned?"></textarea>
+            <div class="new-comment-footer">
+              <button type="submit">Share</button>
+            </div>
+          </form>
           <%} else {%>
 
           <% } %>
         </div>
       </div>
-      <i class="fa-solid fa-comment"></i>
-      <form id="post-comments" action="/comments" method="POST">
-        <textarea name="text" id="res-comment" placeholder="What have you learned?"></textarea>
-        <div class="new-comment-footer">
-          <button type="submit">Share</button>
-        </div>
-      </form>
     </div>
   </section>
   <div>
