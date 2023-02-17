@@ -82,9 +82,20 @@ body {
 
 #comments-container {
   padding-left: 50px;
+    max-width: 640px;
+    margin: 30px auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+
 }
 
 .new-comment {
   margin-left: 5%;
+  max-width: 640px;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
 }
 
