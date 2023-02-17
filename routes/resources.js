@@ -65,7 +65,7 @@ router.get("/details/:id", (req, res) => {
   resourceQueries
     .getResourceDetailsWithId(id)
     .then((resource) => {
-      const templateVars = {resource: resource[0],
+      const templateVars = {resource: resource[0], user:req.session.user,
         hideUserButtons: false };
       if (templateVars.resource.is_video) {
         templateVars.resource.embed = `//www.youtube.com/embed/${getId(templateVars.resource.media_url)}`;

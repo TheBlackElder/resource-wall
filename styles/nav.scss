@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   background-color: #3B6492;
   color: #ffffff;
@@ -11,6 +11,8 @@
   padding-right: 1.5em;
   position: fixed;
   top: 0;
+  left: 0;
+  right:0;
 }
 
 
@@ -33,7 +35,7 @@
   line-height: 28px;
   align-items: center;
   position: relative;
-  width: 715px;
+  width: 30vw;
  }
 
  #input {
