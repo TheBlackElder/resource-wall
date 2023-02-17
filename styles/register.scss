@@ -60,3 +60,8 @@ input[type="submit"]:hover {
   margin-bottom: 10px;
   font-weight: bold;
 }
+
+.error-msg {
+display: flex;
+    justify-content: center;
+}
