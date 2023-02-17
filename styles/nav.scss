@@ -69,6 +69,15 @@
   height: 1rem;
  }
 
+ .avatar {
+  width: 80px;
+  display: block;
+  top: 10%;
+  left: 10%;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid #ddd;
+}
 
  /*
  Add features to search button I like

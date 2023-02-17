@@ -7,11 +7,13 @@ body {
 }
 
 .avatar {
-  background-color: rgb(236, 236, 236);
-  border-radius: 6px 6px 0 0;
-
-  width: 100%;
-  height: 100%;
+  width: 80px;
+  display: block;
+  top: 10%;
+  left: 10%;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid #ddd;
 }
 
 /* use reverse flexbox to take advantage of flex-direction: reverse */
