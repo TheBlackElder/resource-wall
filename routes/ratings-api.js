@@ -20,6 +20,8 @@ router.post("/rate", (req, res) => {
   const user_id = res.sessions.user.id;
   const resource_id = req.params.resource_id;
   const rating = req.body
+  console.log("req.body", req.body);
+  console.log("req.params", req.params);
   ratingQueries
     .addRating(user_id, resource_id, rating)
     .then((ratings) => {
