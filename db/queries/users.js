@@ -1,11 +1,47 @@
 const db = require("../connection");
 const bcrypt = require('bcryptjs');
 
+
+// const login = function (email, password) {
+//   return getUserByEmail(email)
+//     .then(user => {
+//       if (bcrypt.compareSync(password, user.password)) {
+//         console.log('login is true')
+//         return user
+//       }
+//       res.send(e)
+//     })
+//     .catch(e => res.send(e));
+// }
+
+// checks if username exists
+const userExists = function (username, email) {
+  const sql = `SELECT * FROM users WHERE username = $1 OR email = $2;`;
+  return db
+    .query(sql, [username, email])
+    .then((result) => {
+      return result.rows[0];
+    })
+};
+
 // gets single user with given email
 const getUserByEmail = function(email) {
   const sql = `SELECT id, profile_picture, first_name, last_name, username, bio, email, password FROM users WHERE email = $1;`;
   return db
     .query(sql, [email])
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+// gets single user with given username
+const getUserByUsername = function(username) {
+  const sql = `SELECT username, profile_picture, first_name, last_name, username, bio, email, FROM users WHERE username = $1;`;
+  return db
+    .query(sql, [username])
     .then((result) => {
       return result.rows[0];
     })
@@ -28,12 +64,14 @@ const getUserById = function(id) {
 };
 
 // add new user
-const addUser = function(user) {
+const addUser = function(user, password) {
   const sql = `INSERT INTO users (username, email, password, first_name, last_name, profile_picture, bio)
-  VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+  VALUES ($1, $2, $3, $4, $5, $6, $7)
+  RETURNING *;`;
   return db
-    .query(sql, [user.username, user.email, user.password, user.first_name, user.last_name, user.profile_picture, user.bio])
+    .query(sql, [user.username, user.email, password, user.first_name, user.last_name, user.profile_picture, user.bio])
     .then((result) => {
+      console.log('new user!!!!!!! = ',result.rows)
       return result.rows[0];
     })
     .catch((err) => {
@@ -91,8 +129,9 @@ const login = function (email, password) {
         console.log('login is true')
         return user
       }
-      return null;
-    });
+      res.send(e)
+    })
+    .catch(e => res.send(e));
 }
 
 
@@ -103,5 +142,7 @@ module.exports = {
   updateUser,
   updatePassword,
   deleteUser,
-  login
+  login,
+  getUserByUsername,
+  userExists
 };

@@ -9,15 +9,27 @@ router.use(cookieSession({
 }));
 
 // Create a new user
-router.post('/register', (req, res) => {
+router.post('/', (req, res) => {
   const user = req.body;
-  user.password = bcrypt.hashSync(user.password, 12);
+  console.log('user', user)
+  const password = bcrypt.hashSync(user.password, 12)
+  console.log('hashed', password)
   return userQueries
-    .addUser(user)
-    .then(user => {
-      req.session.userId = user.id;
+    .userExists(user.username, user.email)
+    .then((userExists) => {
+      if (userExists && userExists.email === user.email) {
+        return res.render('register', {hideUserButtons: true, error: 'email already exists'});
+      } else if (userExists && userExists.username === user.username) {
+        return res.render('register', {hideUserButtons: true, error: 'username already exists'});
+      }
+      console.log('thenuser', user)
+      userQueries
+        .addUser(user, password)
+        .then((user) => {
+          console.log('new user????', user)
+          res.redirect('/')
+        })
     })
-    .catch(e => res.send(e));
 });
 
 module.exports = router;

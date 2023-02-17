@@ -10,6 +10,7 @@ router.use(cookieSession({
 
 //checks login credentials then
 router.post('/', (req, res) => {
+  console.log('reg body', req.body)
   console.log('password',req.body.password);
   const hashedpw = bcrypt.hashSync(req.body.password, 12);
   console.log('hashed',hashedpw);
@@ -21,7 +22,10 @@ router.post('/', (req, res) => {
         res.redirect('/');
       }
     })
-    .catch(e => res.send(e));
+    .catch(error => {
+      console.log(error);
+      res.status(400).send('wrong log in info');
+    });
 });
 
 // logs user out , clears cookies and redirects to home page
