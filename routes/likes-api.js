@@ -37,7 +37,7 @@ router.get("/user/", (req, res) => {
 router.post("/:resource_id", (req, res) => {
   console.log("++++++++", req.params, req.body);
   const { resource_id } = req.params;
-  const user_id = 1;
+  const user_id = req.session.user.id;
   likeQueries
     .addLike(user_id, resource_id)
     .then((likes) => {
