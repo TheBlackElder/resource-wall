@@ -1,9 +1,21 @@
 #create-resource-container {
-  margin-top: 150px;
+    display: flex;
+    justify-content: center;
+  margin-top: 50px;
+  border-radius: 27px;
+background: #e0e0e0;
+box-shadow:  18px 18px 59px #a4a4a4,
+             -18px -18px 59px #ffffff;
+width: 40%;
+height: 400px;
+padding-top: 3em;
 }
 body {
+  margin-left: 5%;
+  margin-right: 5%;
   font-family: 'Montserrat', sans-serif;
   font-size: large;
+  margin-top: 150px;
 }
 
 #imagePreview {
@@ -13,4 +25,29 @@ body {
   background-size: cover;
   -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
   display: inline-block;
+}
+
+button {
+margin-top: 2em;
+}
+
+
+button {
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all .3s;
+  box-shadow: 1px 1px 12px #c5c5c5, -1px -1px 4px #ffffff;
+}
+
+button:hover {
+  border: 1px solid white;
+}
+
+button:active {
+  box-shadow: 4px 4px 12px #c5c5c5,
+             -4px -4px 12px #ffffff;
 }
