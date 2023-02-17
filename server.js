@@ -43,6 +43,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home-routes');
 const resourcesRoutes = require('./routes/resources');
+const resourcesApiRoutes = require('./routes/resources-api.js');
 
 const commentsApiRoutes = require('./routes/comments-api')
 const likesApiRoutes = require('./routes/likes-api');
@@ -56,6 +57,8 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/api/home', homeRoutes);
 app.use('/resources', resourcesRoutes);
+app.use('/api/resources', resourcesApiRoutes);
+
 
 app.use('/api/comments', commentsApiRoutes);
 app.use('/api/likes', likesApiRoutes);
@@ -69,11 +72,13 @@ app.use('/api/register', registerRoute)
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
+  console.log('111111111',req.session)
   res.render('index', { hideUserButtons: false });
 });
 
 app.get('/login', (req, res) => {
-  res.render('login', { hideUserButtons: true });
+  res.render('login', { hideUserButtons: true,
+  hideSearchButton: true });
 });
 
 app.get('/register', (req, res) => {

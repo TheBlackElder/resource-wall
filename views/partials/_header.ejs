@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="home-logo">
       <a href="/">
-        <img class="logo" src="assets/images/LearnIT-logo.png" alt="">
+        <img class="logo" src="/assets/images/LearnIT-logo.png" alt="">
       </a>
       <span>LearnIT</span>
     </div>
@@ -13,6 +13,7 @@
       </a>
       <% } %>
     </div>
+   <%  if (typeof hideSearchButton === "undefined") { %>
     <div id="search-container">
       <div class="search-bar">
         <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -25,8 +26,10 @@
         <input placeholder="Search" type="search" class="input" id="input" autofocus />
       </div>
     </div>
+    <% } %>
 
     <% if (hideUserButtons) { %>
+
       <% } else { %>
         <% if (!user) { %>
         <div class="user-info">
@@ -37,6 +40,9 @@
             <button class="btn-register" type="submit">Register</button>
           </a>
           <% } else { %>
+            <div class="grid-65">
+              <a href="/resources/user/<%=user.id%>" ><img class="avatar" src="<%= user.profile_picture %>" alt=""></a>
+            </div>
         <a href="/api/login/logout">
           <button class="btn-logout" type="submit">Logout</button>
         </a>

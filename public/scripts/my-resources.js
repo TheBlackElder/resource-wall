@@ -7,11 +7,10 @@ $(() => {
     return match && match[2].length === 11 ? match[2] : null;
   };
   const renderResources = function (resources) {
-    $("#resources-wrapper").empty();
     let count = 0;
     for (const resource of resources) {
       count++;
-      // if (count <= 4) {
+      if (count <= 4) {
         let contentType = "";
         if (resource.is_video) {
           const videoId = getId(resource.media_url);
@@ -24,19 +23,10 @@ $(() => {
         }
 
         const $resource = createResourceElement(resource, contentType);
-        $("#resources-wrapper").prepend($resource);
-      // }
+        $("#createdResources-wrapper").prepend($resource);
+      }
     }
   };
-
-  $(document).on("click", ".btn-floating", function (e) {
-    e.preventDefault();
-    const resourceId = $(this).attr("data-id");
-    console.log("-------------", resourceId);
-    $.post(`/api/likes/${resourceId}/`, { user_id: $('#userId').val() }).done(function (data) {
-      // alert("Data Loaded: " + data);
-    });
-  });
 
   const createResourceElement = (resourceObject, contentType) => {
     const id = resourceObject.id;
@@ -88,60 +78,20 @@ $(() => {
         };
       }
     });
-});
+  });
 
-// Open change password modal
-$(document).ready(function(){
-  $('.modal').modal();
-  instance.close();
-});
-
-
-
-
-  // const createResourceElement = (resourceObject) => {
-  //   let $resource = `
-  // <div class="resource-containers">
-  // <div id="col s12 m4 l2">
-  //   <div class="res-cards">
-  //     <div class="res-image">
-  //     <img src="${resourceObject.media_url}">
-  //       <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
-  //     </div>
-  //   </div>
-  // </div>
-  // </div>
-  // `;
-  //   return $resource;
-  // };
-
-  // const createResourceElement = (resourceObject) => {
-  //   let $resource = `
-  // <div class="resource-containers">
-  // <div id="col s12 m6">
-  //   <div class="res-cards">
-  //     <div class="res-image">
-  //       <img src="${resourceObject.media_url}">
-  //       <span class="res-title">${resourceObject.title}</span>
-  //       <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-  //     </div>
-  //     <div class="res-content">
-  //       <p>${resourceObject.description}</p>
-  //     </div>
-  //   </div>
-  // </div>
-  // </div>
-  // `;
-  //   return $resource;
-  // };
+  // Open change password modal
+  $(document).ready(function () {
+    $(".modal").modal();
+    instance.close();
+  });
 
   const loadResources = () => {
-    $.get("http://localhost:8080/resources/all", (data) => {
+    console.log("hiiiiiii");
+    $.get(`http://localhost:8080/api/resources/user/`, (data) => {
       renderResources(data);
     });
   };
 
   loadResources();
 });
-
-

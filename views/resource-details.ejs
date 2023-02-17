@@ -1,101 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <%- include('partials/_header') %>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/comments.js"></script>
-  <title>Document</title>
+
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/resources-details.css" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+
+<script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+<script type="text/javascript" src="/scripts/comments.js"></script>
+
+
+
+  <title>LearnIt Resource</title>
 </head>
 <body>
+
   <div id="resource-details">
+    <h1>LearnIT Resource</h1>
     <div class="res-creator">
-      <i class="fa-solid fa-circle-user"></i>
+      <div class="grid-65">
+        <img class="avatar" src="<%= user.profile_picture %>" alt="">
+      </div>
       <span>@<%= resource.username %></span>
       <span><%= resource.created_at%></span>
     </div>
+    <section class="col-left">
+
     <div class="res-thumbnail">
-      <img src="assets/images/art.png">
+      <% if (resource.is_video) { %>
+        <div class="video-container card-image waves-effect waves-block waves-light">
+          <iframe width="853" height="480"
+          src="<%= resource.embed %>" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <% } else { %>
+        <img class="activator" src="<%= resource.media_url%>"></img>
+      <% } %>
+      <div class="res-rating">
+        <div class="star-rating">
+          <input type="radio" name="stars" id="star-a" value="5"/>
+          <label for="star-a"></label>
+
+          <input type="radio" name="stars" id="star-b" value="4"/>
+          <label for="star-b"></label>
+
+          <input type="radio" name="stars" id="star-c" value="3"/>
+          <label for="star-c"></label>
+
+          <input type="radio" name="stars" id="star-d" value="2"/>
+          <label for="star-d"></label>
+
+          <input type="radio" name="stars" id="star-e" value="1"/>
+          <label for="star-e"></label>
     </div>
-    <div class="res-rating">
-      <div class="star-rating">
-        <input type="radio" name="stars" id="star-a" value="5"/>
-        <label for="star-a"></label>
-
-        <input type="radio" name="stars" id="star-b" value="4"/>
-        <label for="star-b"></label>
-
-        <input type="radio" name="stars" id="star-c" value="3"/>
-        <label for="star-c"></label>
-
-        <input type="radio" name="stars" id="star-d" value="2"/>
-        <label for="star-d"></label>
-
-        <input type="radio" name="stars" id="star-e" value="1"/>
-        <label for="star-e"></label>
+    <span><%= resource.rating %></span>
   </div>
-  <span><%= resource.rating %></span>
-  <!-- <span>(Based on 2 ratings)</span> -->
+  <div class="res-content">
+    <h1><%= resource.title %></h1>
+    <a href="<%= resource.url %>"><%= resource.url %></a>
+    <p><%= resource.description %></p>
+  </div>
     </div>
-    <div class="res-content">
-      <h3><%= resource.title %></h3>
-      <a href="<%= resource.url %>"><%= resource.url %></a>
-      <p><%= resource.description %></p>
-    </div>
-
     <div id="comments-container">
     </div>
-
+    <div class="new-comment">
+      <div class="comment-creator">
+        <div class="grid-65">
+          <img class="avatar" src="<%= user.profile_picture %>" alt="">
+        </div>
+        <span>@<%= resource.username %></span>
+      </div>
+      <form id="post-comments" action="/comments" method="POST">
+        <textarea name="text" id="res-comment" placeholder="What have you learned?"></textarea>
+        <div class="new-comment-footer">
+          <button type="submit">Share</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  <div>
+    <a href="/">Back</a>
   </div>
-  <a href="/">Back</a>
 </body>
 </html>
 
 
-<!-- Creating modals for resource details  -->
 
-
-<!--
-<div id="resource-modal" class="modal hidden">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div class="res-details">
-      <span>Title</span>
-      <div class="video-container">
-        <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <a href=""> URL </a>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim animi
-        atque, fugit doloremque nulla hic voluptas earum eveniet, nihil
-        molestias debitis modi eos ab sequi minima vero quas deleniti nobis.
-      </p>
-    </div> -->
-
-    <!-- Upload img thumbnail (https://codepen.io/aertmann/pen/mrVaPx)
-    (https://www.tutorialswebsite.com/topics/jquery-to-show-image-thumbnail-before-upload/) -->
-    <!-- <div class="upload-img">
-      <input type="file" accept=".jpg,.jpeg.,.gif,.png,.mov,.mp4" />
-      <p>
-        <strong>Select a video or image file</strong><br /><br />Supported
-        browsers (tested): Chrome, Firefox, Safari, Opera, IE10, IE11, Android
-        (Chrome), iOS Safari (10+)
-      </p>
-
-
-  </div>
-</div>
-
- -->
-
- <!-- Trigger/Open The Modal
-<button id="myBtn">Open Modal</button>
-
-
-<div id="myModal" class="modal">
-
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-  </div>

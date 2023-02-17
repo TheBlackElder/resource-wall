@@ -1,3 +1,22 @@
+#resource-details {
+  margin-top: 150px;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: large;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.avatar {
+  width: 80px;
+  display: block;
+  top: 10%;
+  left: 10%;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid #ddd;
+}
 
 /* use reverse flexbox to take advantage of flex-direction: reverse */
 .star-rating {
@@ -6,7 +25,7 @@
   width: 160px;
   flex-direction: row-reverse;
   justify-content: space-between;
-  margin: 40px auto;
+  // margin: 40px auto;
   position: relative;
 }
 /* hide the inputs */
@@ -49,3 +68,23 @@
   line-height: 21px;
   }
 }
+
+.col-left {
+  display: flex;
+  flex-direction: row;
+
+}
+
+// .col-right {
+//   display: flex;
+//   flex-direction: row;
+// }
+
+#comments-container {
+  padding-left: 50px;
+}
+
+.new-comment {
+  margin-left: 5%;
+}
+

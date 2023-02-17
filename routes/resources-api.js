@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const resourceQueries = require("../db/queries/resources");
 
-
 router.get("/all", (req, res) => {
   resourceQueries
     .getAllResources()
@@ -14,14 +13,14 @@ router.get("/all", (req, res) => {
     });
 });
 
-router.get("/user/:id", (req, res) => {
-  const id = req.params.id;
+router.get("/user/", (req, res) => {
+  const id = req.session.user.id;
+  console.log(id);
   resourceQueries
     .getResourcesWithUserID(id)
     .then((resources) => {
-      const templateVars = {resources: resources,
-        hideUserButtons: false };
-      res.render(`my-resources`, templateVars);
+      const templateVars = resources ;
+      res.json(templateVars);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
@@ -31,7 +30,7 @@ router.get("/user/:id", (req, res) => {
 router.get("/cat/:type", (req, res) => {
   console.log(req.params);
   const type = req.params.type;
-  if(type === "all") {
+  if (type === "all") {
     resourceQueries
       .getAllResources()
       .then((resources) => {
@@ -54,9 +53,8 @@ router.get("/cat/:type", (req, res) => {
 
 // to render youtube videos for resource-details page
 const getId = function (url) {
-  const regExp =
-    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
   return match && match[2].length === 11 ? match[2] : null;
 };
 
@@ -65,10 +63,11 @@ router.get("/details/:id", (req, res) => {
   resourceQueries
     .getResourceDetailsWithId(id)
     .then((resource) => {
-      const templateVars = {resource: resource[0], user:req.session.user,
-        hideUserButtons: false };
+      const templateVars = { resource: resource[0], hideUserButtons: false };
       if (templateVars.resource.is_video) {
-        templateVars.resource.embed = `//www.youtube.com/embed/${getId(templateVars.resource.media_url)}`;
+        templateVars.resource.embed = `//www.youtube.com/embed/${getId(
+          templateVars.resource.media_url
+        )}`;
       }
       res.render(`resource-details`, templateVars);
     })
@@ -86,17 +85,14 @@ router.get("/create", (req, res) => {
   resourceQueries
     .getResourcesWithUserID(id)
     .then((resource) => {
-      const templateVars = {resource: resource,
-        hideUserButtons: false };
+      const templateVars = { resource: resource, hideUserButtons: false };
       // res.json(resources);
       res.render(`create-resource`, templateVars);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
-
 });
-
 
 router.post("/create", (req, res) => {
   const userId = req.sessions.id;
@@ -106,16 +102,13 @@ router.post("/create", (req, res) => {
   console.log(req.params);
 
   resourceQueries
-    .addResource(
-      userId,
-      addObject
-    )
+    .addResource(userId, addObject)
     .then((resource) => {
       res.json(resource);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
-})
+});
 
 module.exports = router;

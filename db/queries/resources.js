@@ -59,12 +59,13 @@ const getResourcesWithUserID = (id) => {
         resources.*,
         resources.user_id AS user_id,
         users.username AS user,
+        users.profile_picture AS profile_picture,
         category_id,
         categories.type AS category
       FROM resources
       JOIN users ON users.id = resources.user_id
       JOIN categories ON categories.id = resources.category_id
-      GROUP BY resources.id, categories.id, users.username
+      GROUP BY resources.id, categories.id, users.username, users.profile_picture
       HAVING resources.user_id = $1
       ;
       `;
@@ -84,12 +85,13 @@ const getResourceDetailsWithId = (id) => {
     SELECT
       resources.*,
       users.username AS username,
+      users.profile_picture AS profile_picture,
       (SELECT AVG(rating) FROM ratings WHERE resources.id = ratings.resource_id) AS rating
       FROM resources
       JOIN users ON users.id = resources.user_id
       LEFT JOIN ratings ON resources.id = ratings.resource_id
       WHERE resources.id = $1
-      GROUP BY resources.id, users.username
+      GROUP BY resources.id, users.username, users.profile_picture
       ;
     `;
   return db
