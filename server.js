@@ -42,12 +42,13 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home-routes');
-const resourcesRoutes = require('./routes/resources.js');
+const resourcesRoutes = require('./routes/resources');
 const resourcesApiRoutes = require('./routes/resources-api.js');
 
-const commentsApiRoutes = require('./routes/comments-api');
-const likesApiRoutes = require('./routes/likes-api.js');
-const loginRoute = require('./routes/login-route.js');
+const commentsApiRoutes = require('./routes/comments-api')
+const likesApiRoutes = require('./routes/likes-api');
+const loginRoute = require('./routes/login-route')
+const registerRoute = require('./routes/register-route')
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -62,6 +63,7 @@ app.use('/api/resources', resourcesApiRoutes);
 app.use('/api/comments', commentsApiRoutes);
 app.use('/api/likes', likesApiRoutes);
 app.use('/api/login', loginRoute)
+app.use('/api/register', registerRoute)
 
 // Note: mount other resources here, using the same pattern above
 
@@ -70,15 +72,19 @@ app.use('/api/login', loginRoute)
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  console.log('111111111',req.session);
-  const templateVars = {user:req.session.user,
-    hideUserButtons: false };
-  res.render('index', templateVars);
+  console.log('111111111',req.session)
+  res.render('index', { hideUserButtons: false });
 });
 
 app.get('/login', (req, res) => {
   res.render('login', { hideUserButtons: true,
   hideSearchButton: true });
+});
+
+app.get('/register', (req, res) => {
+  res.render('register', {
+    hideUserButtons: true,
+    error: undefined });
 });
 
 app.listen(PORT, () => {

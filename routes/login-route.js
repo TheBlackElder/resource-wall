@@ -8,23 +8,9 @@ router.use(cookieSession({
   keys: ['red rabbits juggling orange juice'],
 }));
 
-// Create a new user
-router.post('/register', (req, res) => {
-  const user = req.body;
-  user.password = bcrypt.hashSync(user.password, 12);
-  return userQueries
-    .addUser(user)
-    .then(user => {
-      if (!user) {
-        res.redirect('/')
-      }
-      req.session.userId = user.id;
-    })
-    .catch(e => res.send(e));
-});
-
 //checks login credentials then
 router.post('/', (req, res) => {
+  console.log('reg body', req.body)
   console.log('password',req.body.password);
   const hashedpw = bcrypt.hashSync(req.body.password, 12);
   console.log('hashed',hashedpw);
@@ -36,7 +22,10 @@ router.post('/', (req, res) => {
         res.redirect('/');
       }
     })
-    .catch(e => res.send(e));
+    .catch(error => {
+      console.log(error);
+      res.status(400).send('wrong log in info');
+    });
 });
 
 // logs user out , clears cookies and redirects to home page
