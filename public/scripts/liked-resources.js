@@ -10,7 +10,7 @@ $(() => {
     let count = 0;
     for (const resource of resources) {
       count++;
-      if (count <= 4) {
+      // if (count <= 4) {
         let contentType = "";
         if (resource.is_video) {
           const videoId = getId(resource.media_url);
@@ -20,7 +20,7 @@ $(() => {
       </div>`;
         } else {
           contentType = `<img class="activator" src="${resource.media_url}"></img>`;
-        }
+        // }
 
         const $resource = createResourceElement(resource, contentType);
         $("#likedResources-wrapper").prepend($resource);
