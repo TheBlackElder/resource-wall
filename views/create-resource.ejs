@@ -15,7 +15,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
-
+<script src="/scripts/is-video.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 <%- include('partials/_header') %>
 
 
@@ -32,13 +34,13 @@
 <form class="col s12" id="new-resource-form" method="POST" action="/resources/create">
 <div class="category-dropdown">
   <div class="input-field col s12">
-    <select>
+    <select name="category_id">
       <option value="" disabled selected>Choose category</option>
-      <option value="1">Web Development</option>
-      <option value="2">UX/UI</option>
-      <option value="3">Cybersecurity</option>
-      <option value="4">AI</option>
-      <option value="5">Blockchain</option>
+      <option value="1" name="category_id">Web Development</option>
+      <option value="2" name="category_id">UX/UI</option>
+      <option value="3" name="category_id">Cybersecurity</option>
+      <option value="4" name="category_id">AI</option>
+      <option value="5" name="category_id">Blockchain</option>
     </select>
     <label>Categories</label>
   </div>
@@ -64,6 +66,13 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="media-url" type="text" class="validate" name="media_url" required />
+      <label for="media-url">Thumbnail-URL</label>
+    </div>
+  </div>
+
 
   <div class="file-field input-field">
     <div class="res-thumbnail">
@@ -76,17 +85,11 @@
     </div> -->
   </div>
 
-  <div class="switch">
-    <label>
-      <input type="checkbox" name="is_video"/>
-      <span class="lever"></span>
-      Is it a video?
-    </label>
-  </div>
+  
+    <button type="submit" name="create">
+      Create
+    </button>
 
-  <button type="submit" name="create">
-    Create
-  </button>
 </form>
 <a href="/">Back</a>
 </div>

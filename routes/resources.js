@@ -99,19 +99,19 @@ router.get("/create", (req, res) => {
 
 
 router.post("/create", (req, res) => {
-  const userId = req.sessions.id;
-  const addObject = req.params.add;
+  const userId = req.session.user.id;
+  const addObject = req.body;
 
-  console.log(req.sessions);
-  console.log(req.params);
+  console.log(req.session);
+  console.log(req.body);
 
   resourceQueries
     .addResource(
       userId,
       addObject
     )
-    .then((resource) => {
-      res.json(resource);
+    .then(() => {
+      res.redirect("/");
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });

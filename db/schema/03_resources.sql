@@ -6,9 +6,9 @@ CREATE TABLE resources (
   category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
   title VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
-  url VARCHAR(255) NOT NULL,
-  media_url VARCHAR(255) NOT NULL,
-  is_video BOOLEAN NOT NULL,
+  url TEXT NOT NULL,
+  media_url TEXT NOT NULL,
+  is_video BOOLEAN,
   thumbnail VARCHAR(255),
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );

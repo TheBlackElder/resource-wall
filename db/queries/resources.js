@@ -109,7 +109,7 @@ const addResource = function (user_id, add) {
   const sql = `
     INSERT INTO
     resources
-    (user_id, category_id, title, description, url, medial_url, thumbnail, is_video)
+    (user_id, category_id, title, description, url, media_url, thumbnail, is_video)
     VALUES
     ($1, $2, $3, $4, $5, $6, $7, $8);
     `;
@@ -120,7 +120,7 @@ const addResource = function (user_id, add) {
       add.title,
       add.description,
       add.url,
-      add.medial_url,
+      add.media_url,
       add.thumbnail,
       add.is_video,
     ])

@@ -80,35 +80,35 @@ router.get("/details/:id", (req, res) => {
 //   res.render('create-resource');
 // });
 
-router.get("/create", (req, res) => {
-  const id = req.params.id;
-  resourceQueries
-    .getResourcesWithUserID(id)
-    .then((resource) => {
-      const templateVars = { resource: resource, hideUserButtons: false };
-      // res.json(resources);
-      res.render(`create-resource`, templateVars);
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
-});
+// router.get("/create", (req, res) => {
+//   const id = req.session.user.id;
+//   resourceQueries
+//     .getResourcesWithUserID(id)
+//     .then((resource) => {
+//       const templateVars = { resource: resource, hideUserButtons: false };
+//       // res.json(resources);
+//       res.render(`create-resource`, templateVars);
+//     })
+//     .catch((err) => {
+//       res.status(500).json({ error: err.message });
+//     });
+// });
 
-router.post("/create", (req, res) => {
-  const userId = req.sessions.id;
-  const addObject = req.params.add;
+// router.post("/create", (req, res) => {
+//   const userId = req.session.user.id;
+//   const addObject = req.params.add;
 
-  console.log(req.sessions);
-  console.log(req.params);
+//   console.log(req.sessions);
+//   console.log(req.params);
 
-  resourceQueries
-    .addResource(userId, addObject)
-    .then((resource) => {
-      res.json(resource);
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
-});
+//   resourceQueries
+//     .addResource(userId, addObject)
+//     .then((resource) => {
+//       res.json(resource);
+//     })
+//     .catch((err) => {
+//       res.status(500).json({ error: err.message });
+//     });
+// });
 
 module.exports = router;
