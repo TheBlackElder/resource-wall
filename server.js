@@ -72,8 +72,9 @@ app.use('/api/register', registerRoute)
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  console.log('111111111',req.session)
-  res.render('index', { hideUserButtons: false });
+  const templateVars = {user:req.session.user,
+    hideUserButtons: false };
+  res.render('index', templateVars);
 });
 
 app.get('/login', (req, res) => {
@@ -90,4 +91,3 @@ app.get('/register', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-
