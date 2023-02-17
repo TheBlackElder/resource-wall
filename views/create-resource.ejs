@@ -24,14 +24,14 @@
   <title>Create Resource</title>
 </head>
 <body>
+  <h2>Create Resource</h2>
 <div id="create-resource-container">
-  <h1>Create Resource</h1>
 
   <div class="file-field input-field">
     <div class="res-thumbnail">
       <div id="imagePreview"></div>
-      <input id="uploadFile" type="file" name="image" class="img" />
     </div>
+    <input id="uploadFile" type="file" name="image" class="img" />
 
 <form class="col s12" id="new-resource-form" method="POST" action="/resources/create">
 <div class="category-dropdown">
@@ -79,14 +79,12 @@
 
 
   </div>
-
-
-    <button type="submit" name="create">
-      Create
-    </button>
-
 </form>
-<a href="/">Back</a>
 </div>
+<button type="submit" name="create">
+  Create
+</button>
+
+<a href="/">Back</a>
 </body>
 </html>
