@@ -86,7 +86,8 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
   res.render('register', {
     hideUserButtons: true,
-    error: undefined });
+    error: undefined,
+    hideSearchButton: true});
 });
 
 app.get("/edit", (req, res) => {

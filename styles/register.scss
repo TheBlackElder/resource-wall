@@ -63,5 +63,14 @@ input[type="submit"]:hover {
 
 .error-msg {
 display: flex;
-    justify-content: center;
+justify-content: center;
+color: #ba3939;
+  background: #ffe0e0;
+  border: 1px solid #a33a3a;
+  width: inherit;
+  text-align: center;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
 }
