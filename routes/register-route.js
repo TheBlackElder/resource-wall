@@ -26,7 +26,8 @@ router.post('/', (req, res) => {
       userQueries
         .addUser(user, password)
         .then((user) => {
-          console.log('new user????', user)
+          req.session.user = user;
+          console.log('newstuser',user)
           res.redirect('/')
         })
     })
