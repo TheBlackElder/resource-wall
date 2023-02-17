@@ -29,8 +29,10 @@
     <h1>LearnIT Resource</h1>
     <div class="res-creator">
       <div class="grid-65">
+        <% if (user) { %>
         <img class="avatar" src="<%= user.profile_picture %>" alt="">
       </div>
+      <% }%>
       <span>@<%= resource.username %></span>
       <span><%= resource.created_at%></span>
     </div>
@@ -75,9 +77,13 @@
     <div class="new-comment">
       <div class="comment-creator">
         <div class="grid-65">
+          <% if (user) { %>
           <img class="avatar" src="<%= user.profile_picture %>" alt="">
+          <span>@<%= resource.username %></span>
+          <%} else {%>
+
+          <% } %>
         </div>
-        <span>@<%= resource.username %></span>
       </div>
       <i class="fa-solid fa-comment"></i>
       <form id="post-comments" action="/comments" method="POST">
