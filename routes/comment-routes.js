@@ -34,3 +34,4 @@ router.post("/resources/details/:resource_id/comment", (req, res) => {
   alert('must be logged in to comment')
 });
 
+module.exports = router;

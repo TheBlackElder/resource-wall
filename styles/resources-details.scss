@@ -4,6 +4,8 @@
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: large;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .avatar {
@@ -66,3 +68,23 @@ body {
   line-height: 21px;
   }
 }
+
+.col-left {
+  display: flex;
+  flex-direction: row;
+
+}
+
+// .col-right {
+//   display: flex;
+//   flex-direction: row;
+// }
+
+#comments-container {
+  padding-left: 50px;
+}
+
+.new-comment {
+  margin-left: 5%;
+}
+
