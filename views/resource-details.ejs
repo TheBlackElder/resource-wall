@@ -18,6 +18,7 @@
 
 <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 <script type="text/javascript" src="/scripts/comments.js"></script>
+<script src="/routes/ratings-api.js"></script>
 
 
 
@@ -47,23 +48,29 @@
       <% } %>
       <div class="res-rating">
         <div class="star-rating">
-          <input type="radio" name="stars" id="star-a" value="5"/>
-          <label for="star-a"></label>
 
-          <input type="radio" name="stars" id="star-b" value="4"/>
-          <label for="star-b"></label>
+            <input type="radio" name="stars" id="star-a" value="5"/>
+            <label for="star-a"></label>
 
-          <input type="radio" name="stars" id="star-c" value="3"/>
-          <label for="star-c"></label>
 
-          <input type="radio" name="stars" id="star-d" value="2"/>
-          <label for="star-d"></label>
+            <input type="radio" name="stars" id="star-b" value="4"/>
+            <label for="star-b"></label>
 
-          <input type="radio" name="stars" id="star-e" value="1"/>
-          <label for="star-e"></label>
-    </div>
-    <span><%= resource.rating %></span>
-  </div>
+
+            <input type="radio" name="stars" id="star-c" value="3"/>
+            <label for="star-c"></label>
+
+
+            <input type="radio" name="stars" id="star-d" value="2"/>
+            <label for="star-d"></label>
+
+
+            <input type="radio" name="stars" id="star-e" value="1"/>
+            <label for="star-e"></label>
+
+        </div>
+      <span><%= resource.rating %></span>
+      </div>
   <div class="res-content">
     <h1><%= resource.title %></h1>
     <a href="<%= resource.url %>"><%= resource.url %></a>

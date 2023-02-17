@@ -44,7 +44,7 @@ const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home-routes');
 const resourcesRoutes = require('./routes/resources');
 const resourcesApiRoutes = require('./routes/resources-api.js');
-
+const ratingApiRoutes = require('./routes/ratings-api');
 const commentsApiRoutes = require('./routes/comments-api')
 const likesApiRoutes = require('./routes/likes-api');
 const loginRoute = require('./routes/login-route')
@@ -58,7 +58,7 @@ app.use('/users', usersRoutes);
 app.use('/api/home', homeRoutes);
 app.use('/resources', resourcesRoutes);
 app.use('/api/resources', resourcesApiRoutes);
-
+app.use('/api/ratings', ratingApiRoutes);
 
 app.use('/api/comments', commentsApiRoutes);
 app.use('/api/likes', likesApiRoutes);
