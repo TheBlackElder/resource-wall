@@ -74,7 +74,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  res.render('login', { hideUserButtons: true });
+  res.render('login', { hideUserButtons: true,
+  hideSearchButton: true });
 });
 
 app.listen(PORT, () => {
