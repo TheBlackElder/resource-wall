@@ -24,6 +24,9 @@ router.get("/res/:id", (req, res) => {
 
 router.get("/user/", (req, res) => {
   const id = req.session.user.id
+  if (!id) {
+    res.redirect('/login')
+  }
   likeQueries
     .getLikesWithUserId(id)
     .then((likes) => {

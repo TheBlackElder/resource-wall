@@ -5,6 +5,9 @@ const userQueries = require("../db/queries/users");
 
 router.get("/", (req, res) => {
   const user = req.session.user
+  if (!user) {
+    res.redirect('/login')
+  }
   const id = req.params.id;
   userQueries
     .getUserById(id)

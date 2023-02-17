@@ -83,6 +83,9 @@ router.get("/details/:id", (req, res) => {
 
 router.get("/create", (req, res) => {
   const id = req.params.id;
+  if (!id) {
+    res.redirect('/login')
+  }
   resourceQueries
     .getResourcesWithUserID(id)
     .then((resource) => {
