@@ -43,10 +43,11 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home-routes');
 const resourcesRoutes = require('./routes/resources.js');
+const resourcesApiRoutes = require('./routes/resources-api.js');
 
-const commentsApiRoutes = require('./routes/comments-api')
+const commentsApiRoutes = require('./routes/comments-api');
 const likesApiRoutes = require('./routes/likes-api.js');
-const loginRoute = require('./routes/login-route.js')
+const loginRoute = require('./routes/login-route.js');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -55,6 +56,8 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/api/home', homeRoutes);
 app.use('/resources', resourcesRoutes);
+app.use('/api/resources', resourcesApiRoutes);
+
 
 app.use('/api/comments', commentsApiRoutes);
 app.use('/api/likes', likesApiRoutes);
