@@ -27,6 +27,7 @@
     </div>
 
     <% if (hideUserButtons) { %>
+
       <% } else { %>
         <% if (!user) { %>
         <div class="user-info">
@@ -37,6 +38,9 @@
             <button class="btn-register" type="submit">Register</button>
           </a>
           <% } else { %>
+            <div class="grid-65">
+              <a href="/resources/user/<%=user.id%>" ><img class="avatar" src="<%= user.profile_picture %>" alt=""></a>
+            </div>
         <a href="/api/login/logout">
           <button class="btn-logout" type="submit">Logout</button>
         </a>

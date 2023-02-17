@@ -113,3 +113,18 @@ fieldset {
   -webkit-box-shadow: #2195f338 0px 0px 0px 25px;
   box-shadow: #2195f338 0px 0px 0px 25px;
 }
+
+#my-resources-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#createdResources-wrapper {
+  height: 100px;
+  width: 50px;
+}
+
+#likedResources-wrapper {
+  height: 100px;
+  width: 50px;
+}

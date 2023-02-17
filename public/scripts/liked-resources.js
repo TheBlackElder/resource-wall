@@ -7,7 +7,6 @@ $(() => {
     return match && match[2].length === 11 ? match[2] : null;
   };
   const renderResources = function (resources) {
-    $("#likedResources-wrapper").empty();
     let count = 0;
     for (const resource of resources) {
       count++;
@@ -88,7 +87,7 @@ $(() => {
   });
 
   const loadResources = () => {
-    $.get(`http://localhost:8080/api/likes/user/${user.id}`, (data) => {
+    $.get(`http://localhost:8080/api/likes/user/`, (data) => {
       renderResources(data);
     });
   };

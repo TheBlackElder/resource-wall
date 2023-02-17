@@ -22,8 +22,8 @@ router.get("/res/:id", (req, res) => {
  * Get user liked resources
  */
 
-router.get("/user/:id", (req, res) => {
-  const id = req.params.id
+router.get("/user/", (req, res) => {
+  const id = req.session.user.id
   likeQueries
     .getLikesWithUserId(id)
     .then((likes) => {
