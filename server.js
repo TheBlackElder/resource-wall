@@ -43,7 +43,8 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home-routes');
 const resourcesRoutes = require('./routes/resources');
-const resourcesApiRoutes = require('./routes/resources-api.js');
+const resourcesApiRoutes = require('./routes/resources-api');
+const editApiRoutes = require('./routes/edit-profile');
 
 const commentsApiRoutes = require('./routes/comments-api')
 const likesApiRoutes = require('./routes/likes-api');
@@ -58,7 +59,7 @@ app.use('/users', usersRoutes);
 app.use('/api/home', homeRoutes);
 app.use('/resources', resourcesRoutes);
 app.use('/api/resources', resourcesApiRoutes);
-
+app.use('/api/edit', editApiRoutes)
 
 app.use('/api/comments', commentsApiRoutes);
 app.use('/api/likes', likesApiRoutes);
@@ -86,6 +87,15 @@ app.get('/register', (req, res) => {
   res.render('register', {
     hideUserButtons: true,
     error: undefined });
+});
+
+app.get("/edit", (req, res) => {
+      const templateVars = {
+        user: user,
+        resources: resources,
+        hideUserButtons: false
+      };
+      res.render(`edit-profile`, templateVars);
 });
 
 app.listen(PORT, () => {

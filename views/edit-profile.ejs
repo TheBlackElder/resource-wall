@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,86 +11,53 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/edit-profile.css" />
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <!-- Materialize  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-<%- include('partials/_header') %>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+    rel="stylesheet">
 
+  <%- include('partials/_header') %>
 
-  <title>Edit Profile</title>
-</head>
 <body>
 
-<div class="user-profile">
-  <h3>Edit Profile</h3>
+  <div>
+    <h1>Edit Profile</h1>
 
-  <div class="res-thumbnail">
-    <div id="imagePreview"></div>
-    <input id="uploadFile" type="file" name="image" class="img" />
   </div>
 
-  <div>
-    <label for="name">Name</label>
-    <br />
-    <input type="name" name="name" placeholder="name" required />
-  </div>
-  <div>
-    <label for="name">Username</label>
-    <br />
-    <input type="username" name="username" placeholder="username" required />
-  </div>
-  <div>
-    <label for="bio">Bio</label>
-    <br />
-    <textarea name="bio" id="user-bio" cols="30" rows="10"></textarea>
-  </div>
-  <div>
-    <div>
-      <label for="email">Email</label>
-      <br />
-      <input type="email" name="email" placeholder="email" disabled />
-    </div>
-    <br />
-    <p><a class="modal-trigger" href="#modal1">Change Password</a></p>
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button type="submit" class="btn">Cancel</button>
-  </div>
+  <form action="/api/edit" method="POST">
 
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <span class="close right">&times;</span>
-      <h4>Change Password</h4>
-      <label for="password">Old Password</label>
-      <input
-        type="password"
-        name="old-password"
-        placeholder="old-password"
-        required
-      />
-      <label for="password">New Password</label>
-      <input
-        type="password"
-        name="new-password"
-        placeholder="new-password"
-        required
-      />
-      <label for="password">Confirm Password</label>
-      <input
-        type="password"
-        name="confirm-password"
-        placeholder="confirm-password"
-        required
-      />
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-        >Confirm</a
-      >
-    </div>
-  </div>
-</div>
+    <label for="username">Username:  <%=user.username%></label>
+    <input type="text" id="username" name="username" readonly><br>
+
+    <label for="first_name">First Name:  <%=user.first_name%></label>
+    <input type="text" id="first_name" name="first_name" readonly><br>
+
+    <label for="last_name">Last Name:  <%=user.last_name%></label>
+    <input type="text" id="last_name" name="last_name" readonly><br>
+
+    <label for="email">Email:  <%=user.email%></label>
+    <input type="email" id="email" name="email" readonly><br>
+
+    <label for="profile_picture">Profile Picture:</label>
+    <input placeholder='INSERT IMG URL' type="text" id="profile_picture" name="profile_picture"><br>
+
+    <label for="bio">Bio: <%=user.bio%></label><br>
+    <textarea id="bio" name="bio" required></textarea><br>
+
+
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" readonly><br>
+
+    <input type="submit" value="Save">
+  </form>
 </body>
+
 </html>
