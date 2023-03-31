@@ -1,6 +1,8 @@
 LHL Node Skeleton
 =========
 
+![Screenshot 2023-03-30 at 11 46 11 PM](https://user-images.githubusercontent.com/118557828/229017822-fef554f0-e427-4702-82ef-8962cd6350a3.png)
+
 ## Project Setup
 
 The following steps are only for _one_ of the group members to perform.
